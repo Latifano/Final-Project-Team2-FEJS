@@ -1,9 +1,18 @@
+@font-face {
+  font-family: "CustomFont";
+  src: url(./CustomFont/Poppins-Light.ttf);
+}
+
+.customText {
+  font-family: "CustomFont", sans-serif;
+}
+
 .logo {
   position: absolute;
   width: 98px;
   height: 53px;
   left: 128px;
-  top: 15px;
+  top: 6px;
 }
 
 .custom-form {
@@ -17,7 +26,6 @@
   width: 444px;
   height: 48px;
   left: 260px;
-  top: 18px;
 
   background: #eeeeee;
   border-radius: 16px;
@@ -50,14 +58,12 @@
 }
 
 .text-masuk {
-  /* Masuk */
-
   width: 45px;
   height: 20px;
 
   /* Body/14/Regular */
 
-  font-family: "Poppins";
+  font-family: "CustomFont", sans-serif;
   font-style: normal;
   font-weight: 400;
   font-size: 14px;
@@ -72,5 +78,16 @@
 
   flex: none;
   order: 1;
+  flex-grow: 0;
+}
+
+.icon_masuk {
+  width: 20px;
+  height: 20px;
+
+  /* Inside auto layout */
+
+  flex: none;
+  order: 0;
   flex-grow: 0;
 }

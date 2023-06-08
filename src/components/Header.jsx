@@ -1,5 +1,7 @@
 // import Button react js
 import Button from "react-bootstrap/Button";
+
+// import grid react js
 import { Container, Row, Col } from "react-bootstrap";
 
 // import form and some navbar library
@@ -9,6 +11,7 @@ import Navbar from "react-bootstrap/Navbar";
 
 // import logo Tiketku
 import logo from "../styles/images/logo.png";
+import icon_masuk from "../styles/images/fi_log-in.png";
 
 // import css
 import "../styles/header.css";
@@ -19,7 +22,7 @@ function Header() {
   return (
     <>
       {/* First Line Navbar */}
-      <Navbar bg="light" expand="lg">
+      <Navbar bg="light" expand="lg" className="customText">
         <Container fluid>
           <Navbar.Toggle aria-controls="navbarScroll" />
           <Navbar.Collapse id="navbarScroll">
@@ -44,6 +47,7 @@ function Header() {
               </Form>
             </Nav>
             <Button className="button-masuk">
+              <img className="icon_masuk" src={icon_masuk} alt="Icon Masuk" />
               <p className="text-masuk">Masuk</p>
             </Button>
           </Navbar.Collapse>

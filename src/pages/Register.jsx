@@ -47,11 +47,20 @@ const Register = () => {
             >
               <div className="form-group mb-3" controlId="formBasicText">
                 <label htmlFor="name">Nama</label>
-                <Form.Control type="text" placeholder="Nama Lengkap" />
+                <Form.Control
+                  id="name"
+                  value={name}
+                  onChange={handleNameChange}
+                  type="text"
+                  placeholder="Nama Lengkap"
+                />
               </div>
               <div className="form-group mb-3" controlId="formBasicEmail">
                 <label htmlFor="email">Email</label>
                 <Form.Control
+                  id="email"
+                  value={email}
+                  onChange={handleEmailChange}
                   type="email"
                   placeholder="Contoh: johndoe@gmail.com"
                 />
@@ -59,6 +68,9 @@ const Register = () => {
               <div className="form-group mb-3">
                 <label htmlFor="phoneNumber">Nomor Telepon</label>
                 <Form.Control
+                  id="phoneNumber"
+                  value={phoneNumber}
+                  onChange={handlePhoneNumberChange}
                   type="text"
                   placeholder="Masukkan Nomor Telepon"
                 />
@@ -66,6 +78,9 @@ const Register = () => {
               <Form.Group className="form-group mb-3">
                 <label htmlFor="password">Password</label>
                 <Form.Control
+                  id="password"
+                  value={password}
+                  onChange={handlePasswordChange}
                   type="password"
                   placeholder="Buat Password"
                 />

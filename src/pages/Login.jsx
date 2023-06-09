@@ -15,14 +15,14 @@ const Login = () => {
             <Form className="width-form mt-4">
               <Form.Group className="mb-3" controlId="formBasicEmail">
                 <Form.Label>Email/No Telepon</Form.Label>
-                <Form.Control type="email" placeholder="Contoh: johndoe@gmail.com" />
+                <Form.Control type="email" placeholder="Contoh: jkwkwwk" />
               </Form.Group>
 
               <Form.Group className="mb-3" controlId="formBasicPassword">
                 <div class="d-flex justify-content-between">
                   <Form.Label>Password</Form.Label>
-                  <Link to="/reset-password" className="txt-color fw-bold">
-                    Lupa Kata Sandi
+                  <Link to="/Lupasandi" className="txt-color fw-bold">
+                    Lupasandi
                   </Link>
                 </div>
 

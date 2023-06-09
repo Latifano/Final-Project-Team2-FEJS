@@ -1,5 +1,7 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Header from "../components/Header";
+
+import { Card } from "react-bootstrap";
 
 // import Button react js
 import Button from "react-bootstrap/Button";
@@ -13,10 +15,32 @@ import banner_home from "../styles/images/img_banner.png";
 // import logo search
 import search_logo from "../styles/images/fi_search.png";
 
+import img_destination1 from "../styles/images/img_destination1.png";
+
 // import css
 import "../styles/home.css";
 
 function Home() {
+  // First Line : Fav Destination
+
+  const [airline, setAirline] = useState([]);
+
+  useEffect(() => {
+    fetchAirline();
+  }, []);
+
+  const fetchAirline = async () => {
+    try {
+      const response = await fetch("https://api.aviationstack.com/v1/flights");
+      const data = await response.json();
+      setAirline(data);
+    } catch (error) {
+      console.log("Error", error);
+    }
+  };
+
+  // Last Line : Fav Destination
+
   return (
     <>
       <Header />
@@ -100,6 +124,23 @@ function Home() {
               </Button>
             </div>
             {/* last Line Kategori Destinasi */}
+
+            {/* Card Fav Destination */}
+            <div className="card-destination">
+              <Card className="card-kategori">
+                <Card.Img
+                  className="img_kategori"
+                  variant="top"
+                  src={img_destination1}
+                />
+                <Card.Body>
+                  <h6 className="destination">Jakarta - Bangkok</h6>
+                  <h6 className="airline">AirAsia</h6>
+                  <h6 className="date">20 - 30 Maret 2023</h6>
+                  <h6 className="price">Mulai dari IDR 950.000 </h6>
+                </Card.Body>
+              </Card>
+            </div>
           </div>
         </Row>
       </Container>

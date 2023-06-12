@@ -1,7 +1,17 @@
 import React, { useState, useEffect } from "react";
 import Header from "../components/Header";
 
-import { Card } from "react-bootstrap";
+import { Card, Form } from "react-bootstrap";
+
+// import mui library
+import InputLabel from "@mui/material/InputLabel";
+import Select from "@mui/material/Select";
+import MenuItem from "@mui/material/MenuItem";
+import FormControl from "@mui/material/FormControl";
+import FormHelperText from "@mui/material/FormHelperText";
+import Switch from "@mui/material/Switch";
+import CachedIcon from "@mui/icons-material/Cached";
+import ButtonMui from "@mui/material/Button";
 
 // import Button react js
 import Button from "react-bootstrap/Button";
@@ -52,10 +62,130 @@ function Home() {
         </Row>
         <Row>
           <div>
-            {/* Title Form Booking */}
-            <h6 className="title_form">
-              Pilih Jadwal Penerbangan spesial di Tiketku!
-            </h6>
+            {/* First Line Form Booking Destinasi */}
+            <div className="frame_booking">
+              <div>
+                <h6 className="title_form">
+                  Pilih Jadwal Penerbangan spesial di Tiketku!
+                </h6>
+              </div>
+              <div className="content_form">
+                <div>
+                  <FormControl sx={{ m: 1, minWidth: 200 }}>
+                    <InputLabel id="from-select-label-id">From</InputLabel>
+                    <Select
+                      labelId="from-select-label"
+                      id="from-select"
+                      // value={age}
+                      label="From"
+                      // onChange={handleChange}
+                    >
+                      <MenuItem value={"Jakarta"}>Jakarta</MenuItem>
+                      <MenuItem value={"Bandung"}>Bandung</MenuItem>
+                      <MenuItem value={"Semarang"}>Semarang</MenuItem>
+                    </Select>
+                    <FormHelperText>Dari mana anda?</FormHelperText>
+                  </FormControl>
+
+                  <CachedIcon sx={{ fontSize: 32 }} />
+                  <FormControl sx={{ m: 1, minWidth: 200 }}>
+                    <InputLabel id="to-select-label-id">To</InputLabel>
+                    <Select
+                      labelId="to-select-label"
+                      id="to-select"
+                      // value={age}
+                      label="To"
+                      // onChange={handleChange}
+                    >
+                      <MenuItem value={"Jakarta"}>Jakarta</MenuItem>
+                      <MenuItem value={"Bandung"}>Bandung</MenuItem>
+                      <MenuItem value={"Semarang"}>Semarang</MenuItem>
+                    </Select>
+                    <FormHelperText>Mau kemana anda?</FormHelperText>
+                  </FormControl>
+
+                  <FormControl sx={{ m: 1, minWidth: 430 }}>
+                    <InputLabel id="passenger-select-label-id">
+                      Passenger
+                    </InputLabel>
+                    <Select
+                      labelId="passenger-select-label"
+                      id="passenger-select"
+                      // value={age}
+                      label="Passenger"
+                      // onChange={handleChange}
+                    >
+                      <MenuItem value={"Jakarta"}>Dewasa</MenuItem>
+                      <MenuItem value={"Bandung"}>Anak</MenuItem>
+                      <MenuItem value={"Semarang"}>Bayi</MenuItem>
+                    </Select>
+                    <FormHelperText>Berapa Penumpang?</FormHelperText>
+                  </FormControl>
+                </div>
+                <div>
+                  <FormControl sx={{ m: 1, minWidth: 200 }}>
+                    <InputLabel id="departure-select-label-id">
+                      Departure
+                    </InputLabel>
+                    <Select
+                      labelId="departure-select-label"
+                      id="departure-select"
+                      // value={age}
+                      label="Departure"
+                      // onChange={handleChange}
+                    >
+                      <MenuItem value={"Jakarta"}>Tanggal Berangkat</MenuItem>
+                    </Select>
+                    <FormHelperText>Tanggal Berangkat</FormHelperText>
+                  </FormControl>
+                  {/* Switch untuk mengaktifkan return */}
+                  <Switch size="small" />
+                  <FormControl sx={{ m: 1, minWidth: 190 }}>
+                    <InputLabel id="return-select-label-id">Return</InputLabel>
+                    <Select
+                      labelId="return-select-label"
+                      id="return-select"
+                      // value={age}
+                      label="Return"
+                      // onChange={handleChange}
+                    >
+                      <MenuItem value={"Jakarta"}>Tanggal Pulang</MenuItem>
+                    </Select>
+                    <FormHelperText>Tanggal Pulang</FormHelperText>
+                  </FormControl>
+
+                  <FormControl sx={{ m: 1, minWidth: 250 }}>
+                    <InputLabel id="return-select-label-id">
+                      Seat Class
+                    </InputLabel>
+                    <Select
+                      labelId="return-select-label"
+                      id="return-select"
+                      // value={age}
+                      label="Seat Class"
+                      // onChange={handleChange}
+                    >
+                      <MenuItem value={"Economy"}>Economy</MenuItem>
+                      <MenuItem value={"Premium Economy"}>
+                        Premium Economy
+                      </MenuItem>
+                      <MenuItem value={"Business"}>Business</MenuItem>
+                      <MenuItem value={"First Class"}>First Class</MenuItem>
+                    </Select>
+                    <FormHelperText>Kelas Penerbangan</FormHelperText>
+                  </FormControl>
+
+                  <ButtonMui
+                    variant="contained"
+                    size="large"
+                    sx={{ m: 2, minWidth: 30 }}
+                  >
+                    Search
+                  </ButtonMui>
+                </div>
+              </div>
+            </div>
+            {/* First Line Form Booking Destinasi */}
           </div>
         </Row>
         <Row>
@@ -134,7 +264,7 @@ function Home() {
                   src={img_destination1}
                 />
                 <Card.Body>
-                  <h6 className="destination">Jakarta -> Bangkok</h6>
+                  <h6 className="destination">Jakarta - Bangkok</h6>
                   <h6 className="airline">AirAsia</h6>
                   <h6 className="date">20 - 30 Maret 2023</h6>
                   <h6 className="price">Mulai dari IDR 950.000 </h6>

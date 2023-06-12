@@ -12,9 +12,9 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/Login" element={<Login />} />
-          <Route path="/Lupasandi" element={<Lupasandi />} />
-          <Route path="/Register" element={<Register />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/lupasandi" element={<Lupasandi />} />
+          <Route path="/register" element={<Register />} />
           <Route path="/verifikasi-otp" element={<Otp />} />
         </Routes>
       </BrowserRouter>

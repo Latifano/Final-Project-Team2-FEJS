@@ -16,7 +16,6 @@ import banner_home from "../styles/images/img_banner.png";
 import search_logo from "../styles/images/fi_search.png";
 
 import img_destination1 from "../styles/images/img_destination1.png";
-import { ArrowRight } from "react-bootstrap-icons";
 
 // import css
 import "../styles/home.css";
@@ -135,10 +134,7 @@ function Home() {
                   src={img_destination1}
                 />
                 <Card.Body>
-                  <h6 className="destination">
-                    Jakarta <ArrowRight /> Bangkok
-                  </h6>
-
+                  <h6 className="destination">Jakarta - Bangkok</h6>
                   <h6 className="airline">AirAsia</h6>
                   <h6 className="date">20 - 30 Maret 2023</h6>
                   <h6 className="price">Mulai dari IDR 950.000 </h6>

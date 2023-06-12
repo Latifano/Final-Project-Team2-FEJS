@@ -17,6 +17,7 @@ import icon_masuk from "../styles/images/fi_log-in.png";
 import "../styles/header.css";
 
 import React from "react";
+import { Link } from "react-router-dom";
 
 function Header() {
   return (
@@ -46,10 +47,12 @@ function Header() {
                 />
               </Form>
             </Nav>
-            <Button className="button-masuk">
-              <img className="icon_masuk" src={icon_masuk} alt="Icon Masuk" />
-              <p className="text-masuk">Masuk</p>
-            </Button>
+            <Link to={"/login"}>
+              <Button className="button-masuk">
+                <img className="icon_masuk" src={icon_masuk} alt="Icon Masuk" />
+                <p className="text-masuk">Masuk</p>
+              </Button>
+            </Link>
           </Navbar.Collapse>
         </Container>
       </Navbar>

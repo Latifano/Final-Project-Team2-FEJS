@@ -6,10 +6,11 @@
   top: 116px;
 }
 
+/* ============= First Line Form Booking =============*/
 .title_form {
   /* Pilih Jadwal Penerbangan spesial di Tiketku! */
   position: absolute;
-  top: 316px;
+  right: 1px;
   width: 459px;
   height: 30px;
 
@@ -30,6 +31,40 @@
   order: 0;
   flex-grow: 0;
 }
+
+.content_form {
+  position: absolute;
+  left: 30px;
+  top: 60px;
+  font-family: "CustomFont";
+}
+
+.frame_booking {
+  box-sizing: border-box;
+
+  /* Auto layout */
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 24px 0px;
+  gap: 10px;
+
+  position: absolute;
+  width: 968px;
+  height: 298px;
+  left: 236px;
+  top: 292px;
+
+  background: #ffffff;
+  border: 1px solid #d0d0d0;
+  /* Shadow/High */
+
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.15);
+  border-radius: 12px;
+}
+
+/* ============= Last Line Form Booking =============*/
 
 /* ============= First Line Destinasi Favorit =============*/
 /* ============= First Line Destinasi Favorit =============*/

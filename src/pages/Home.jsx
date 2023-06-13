@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Header from "../components/Header";
+import { Link } from "react-router-dom";
 
 import { Card, Form } from "react-bootstrap";
 
@@ -175,13 +176,15 @@ function Home() {
                     <FormHelperText>Kelas Penerbangan</FormHelperText>
                   </FormControl>
 
-                  <ButtonMui
-                    variant="contained"
-                    size="large"
-                    sx={{ m: 2, minWidth: 30 }}
-                  >
-                    Search
-                  </ButtonMui>
+                  <Link to={"/search_result"}>
+                    <ButtonMui
+                      variant="contained"
+                      size="large"
+                      sx={{ m: 2, minWidth: 30 }}
+                    >
+                      Search
+                    </ButtonMui>
+                  </Link>
                 </div>
               </div>
             </div>

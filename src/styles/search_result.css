@@ -1,0 +1,132 @@
+.title_searchresult {
+  position: absolute;
+  width: 189px;
+  height: 30px;
+  left: 260px;
+  top: 131px;
+
+  /* Heading/20/Bold */
+
+  font-family: "CustomFont";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 30px;
+  /* identical to box height, or 150% */
+
+  color: #000000;
+}
+
+.container_result_data_selected {
+  /* Auto layout */
+  position: absolute;
+  top: 193px;
+  left: 276px;
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 5px 16px;
+  gap: 8px;
+  isolation: isolate;
+
+  width: 700px;
+  height: 50px;
+
+  /* Primary/Purple/03 */
+
+  background: #a06ece;
+  border-radius: 12px;
+
+  /* Inside auto layout */
+
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+}
+
+.text_result_data_selected {
+  /* detail */
+  position: absolute;
+  top: 13px;
+  left: 58px;
+  width: 305px;
+  height: 24px;
+
+  /* Title/16/Medium */
+
+  font-family: "CustomFont";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  /* identical to box height, or 150% */
+
+  /* Neutral/01 */
+
+  color: #ffffff;
+
+  /* Inside auto layout */
+
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+}
+
+.button_ubah_pencarian {
+  /* List item */
+
+  /* Auto layout */
+  position: absolute;
+  left: 728px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 5px 16px;
+  gap: 8px;
+  isolation: isolate;
+
+  width: 220px;
+  height: 50px;
+
+  /* Allert/Success */
+
+  background: #73ca5c;
+  /* Shadow/Low */
+
+  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.15);
+  border-radius: 12px;
+
+  /* Inside auto layout */
+
+  flex: none;
+  order: 1;
+  flex-grow: 0;
+}
+
+.text_button_ubah_pencarian {
+  width: 132px;
+  height: 24px;
+  position: absolute;
+  left: 52px;
+  top: 13px;
+
+  /* Title/16/Bold */
+
+  font-family: "CustomFont";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 24px;
+  /* identical to box height, or 150% */
+
+  /* Neutral/01 */
+
+  color: #ffffff;
+
+  /* Inside auto layout */
+
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+}

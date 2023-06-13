@@ -5,6 +5,7 @@ import Login from "./pages/Login";
 import Lupasandi from "./pages/Lupasandi";
 import Register from "./pages/Register";
 import Otp from "./pages/Otp";
+import SearchResult from "./pages/SearchResult";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           <Route path="/lupasandi" element={<Lupasandi />} />
           <Route path="/register" element={<Register />} />
           <Route path="/verifikasi-otp" element={<Otp />} />
+          <Route path="/search_result" element={<SearchResult />} />
         </Routes>
       </BrowserRouter>
     </>

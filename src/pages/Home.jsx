@@ -25,10 +25,10 @@ import banner_home from "../styles/images/img_banner.png";
 // import logo search
 import search_logo from "../styles/images/fi_search.png";
 
-import img_destination1 from "../styles/images/img_destination1.png";
-
 // import css
 import "../styles/home.css";
+import CardFavDestination from "../components/CardFavDestination";
+import Footer from "../components/Footer";
 
 function Home() {
   // First Line : Fav Destination
@@ -256,24 +256,11 @@ function Home() {
             {/* last Line Kategori Destinasi */}
 
             {/* Card Fav Destination */}
-            <div className="card-destination">
-              <Card className="card-kategori">
-                <Card.Img
-                  className="img_kategori"
-                  variant="top"
-                  src={img_destination1}
-                />
-                <Card.Body>
-                  <h6 className="destination">Jakarta - Bangkok</h6>
-                  <h6 className="airline">AirAsia</h6>
-                  <h6 className="date">20 - 30 Maret 2023</h6>
-                  <h6 className="price">Mulai dari IDR 950.000 </h6>
-                </Card.Body>
-              </Card>
-            </div>
+            <CardFavDestination />
           </div>
         </Row>
       </Container>
+      <Footer />
     </>
   );
 }

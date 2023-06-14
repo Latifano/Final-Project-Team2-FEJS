@@ -32,6 +32,12 @@ import banner_home from "../styles/images/img_banner.png";
 // import logo search
 import search_logo from "../styles/images/fi_search.png";
 
+import takeoff_icon from "../styles/images/takeoff.png";
+import landing_icon from "../styles/images/landing.png";
+import date_icon from "../styles/images/date.png";
+import passenger_icon from "../styles/images/passenger.png";
+import seat_class from "../styles/images/seat_class.png";
+
 // import css
 import "../styles/home.css";
 import CardFavDestination from "../components/CardFavDestination";
@@ -71,18 +77,6 @@ function Home() {
   const handleCloseReturn = () => setShowReturn(false);
   const handleOpenReturn = () => setShowReturn(true);
 
-  // Modal Date return
-  // const [isModalOpen, setIsModalOpen] = useState(false);
-  // const [selectedDate, setSelectedDate] = useState("");
-
-  // const openModal = () => {
-  //   setIsModalOpen(true);
-  // };
-
-  // const closeModal = () => {
-  //   setIsModalOpen(false);
-  // };
-
   const handleDateSelectDep = (date) => {
     setDatedep(date);
   };
@@ -112,6 +106,11 @@ function Home() {
               </div>
               <div className="content_form">
                 <div>
+                  <img
+                    className="takeoff_icon"
+                    src={takeoff_icon}
+                    alt="Takeoff Icon"
+                  />
                   <FormControl sx={{ m: 1, minWidth: 200 }}>
                     <InputLabel id="from-select-label-id">From</InputLabel>
                     <Select
@@ -129,6 +128,13 @@ function Home() {
                   </FormControl>
 
                   <CachedIcon sx={{ fontSize: 32 }} />
+
+                  <img
+                    className="landing_icon"
+                    src={landing_icon}
+                    alt="Landing Icon"
+                  />
+
                   <FormControl sx={{ m: 1, minWidth: 200 }}>
                     <InputLabel id="to-select-label-id">To</InputLabel>
                     <Select
@@ -145,7 +151,13 @@ function Home() {
                     <FormHelperText>Mau kemana anda?</FormHelperText>
                   </FormControl>
 
-                  <FormControl sx={{ m: 1, minWidth: 430 }}>
+                  <img
+                    className="passenger_icon"
+                    src={passenger_icon}
+                    alt="Passenger Icon"
+                  />
+
+                  <FormControl sx={{ m: 1, minWidth: 300 }}>
                     <InputLabel id="passenger-select-label-id">
                       Passenger
                     </InputLabel>
@@ -163,7 +175,9 @@ function Home() {
                     <FormHelperText>Berapa Penumpang?</FormHelperText>
                   </FormControl>
                 </div>
+
                 <div>
+                  <img className="date_icon" src={date_icon} alt="Date Icon" />
                   {/* First Line Modal Departure */}
                   <Button onClick={handleOpenDeparture}>
                     Departure : {datedep}
@@ -187,6 +201,12 @@ function Home() {
                     onSelectDate={handleDateSelectRet}
                   />
                   {/* Last Line Modal Return */}
+
+                  <img
+                    className="seat_class_icon"
+                    src={seat_class}
+                    alt="Seat Class Icon"
+                  />
 
                   <FormControl
                     sx={{ m: 1, minWidth: 250 }}

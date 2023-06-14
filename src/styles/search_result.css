@@ -130,3 +130,28 @@
   order: 0;
   flex-grow: 0;
 }
+
+.container_result_date {
+  /* Advance */
+
+  /* Auto layout */
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 8px 0px;
+
+  width: 936px;
+  height: 63px;
+
+  /* Neutral/01 */
+
+  background: #ffffff;
+
+  /* Inside auto layout */
+
+  flex: none;
+  order: 1;
+  align-self: stretch;
+  flex-grow: 0;
+}

@@ -96,6 +96,19 @@
   color: #000000;
 }
 
+.date_icon {
+  margin-right: 10px;
+}
+
+.seat_class_icon {
+  margin-left: 20px;
+  margin-right: -20px;
+}
+
+.landing_icon {
+  margin-left: 20px;
+}
+
 .kategori {
   /* Auto layout */
 

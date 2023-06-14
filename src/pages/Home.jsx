@@ -13,6 +13,12 @@ import FormHelperText from "@mui/material/FormHelperText";
 import Switch from "@mui/material/Switch";
 import CachedIcon from "@mui/icons-material/Cached";
 import ButtonMui from "@mui/material/Button";
+import Typography from "@mui/material/Typography";
+import Modal from "@mui/material/Modal";
+import Box from "@mui/material/Box";
+
+import ModalDeparture from "../components/search-booking/ModalDeparture";
+import ModalReturn from "../components/search-booking/ModalReturn";
 
 // import Button react js
 import Button from "react-bootstrap/Button";
@@ -48,6 +54,40 @@ function Home() {
     } catch (error) {
       console.log("Error", error);
     }
+  };
+
+  // Modal Date Departure
+  // const [isModalOpen, setIsModalOpen] = useState(false);
+  const [datedep, setDatedep] = useState();
+  const [dateret, setDateret] = useState();
+  // const [selectedDateReturn, setSelectedDateReturn] = useState("");
+
+  const [showDeparture, setShowDeparture] = useState();
+  const handleCloseDeparture = () => setShowDeparture(false);
+  const handleOpenDeparture = () => setShowDeparture(true);
+  const dateDeparture = () => setDatedep();
+
+  const [showReturn, setShowReturn] = useState();
+  const handleCloseReturn = () => setShowReturn(false);
+  const handleOpenReturn = () => setShowReturn(true);
+
+  // Modal Date return
+  // const [isModalOpen, setIsModalOpen] = useState(false);
+  // const [selectedDate, setSelectedDate] = useState("");
+
+  // const openModal = () => {
+  //   setIsModalOpen(true);
+  // };
+
+  // const closeModal = () => {
+  //   setIsModalOpen(false);
+  // };
+
+  const handleDateSelectDep = (date) => {
+    setDatedep(date);
+  };
+  const handleDateSelectRet = (date) => {
+    setDateret(date);
   };
 
   // Last Line : Fav Destination
@@ -124,38 +164,34 @@ function Home() {
                   </FormControl>
                 </div>
                 <div>
-                  <FormControl sx={{ m: 1, minWidth: 200 }}>
-                    <InputLabel id="departure-select-label-id">
-                      Departure
-                    </InputLabel>
-                    <Select
-                      labelId="departure-select-label"
-                      id="departure-select"
-                      // value={age}
-                      label="Departure"
-                      // onChange={handleChange}
-                    >
-                      <MenuItem value={"Jakarta"}>Tanggal Berangkat</MenuItem>
-                    </Select>
-                    <FormHelperText>Tanggal Berangkat</FormHelperText>
-                  </FormControl>
+                  {/* First Line Modal Departure */}
+                  <Button onClick={handleOpenDeparture}>
+                    Departure : {datedep}
+                  </Button>
+                  <ModalDeparture
+                    show={showDeparture}
+                    onClose={handleCloseDeparture}
+                    onSelectDate={handleDateSelectDep}
+                  />
+
+                  {/* Last Line Modal Departure */}
+
                   {/* Switch untuk mengaktifkan return */}
                   <Switch size="small" />
-                  <FormControl sx={{ m: 1, minWidth: 190 }}>
-                    <InputLabel id="return-select-label-id">Return</InputLabel>
-                    <Select
-                      labelId="return-select-label"
-                      id="return-select"
-                      // value={age}
-                      label="Return"
-                      // onChange={handleChange}
-                    >
-                      <MenuItem value={"Jakarta"}>Tanggal Pulang</MenuItem>
-                    </Select>
-                    <FormHelperText>Tanggal Pulang</FormHelperText>
-                  </FormControl>
 
-                  <FormControl sx={{ m: 1, minWidth: 250 }}>
+                  {/* First Line Modal Return */}
+                  <Button onClick={handleOpenReturn}>Return : {dateret}</Button>
+                  <ModalReturn
+                    show={showReturn}
+                    onClose={handleCloseReturn}
+                    onSelectDate={handleDateSelectRet}
+                  />
+                  {/* Last Line Modal Return */}
+
+                  <FormControl
+                    sx={{ m: 1, minWidth: 250 }}
+                    className="seat_class_box"
+                  >
                     <InputLabel id="return-select-label-id">
                       Seat Class
                     </InputLabel>
@@ -181,6 +217,7 @@ function Home() {
                       variant="contained"
                       size="large"
                       sx={{ m: 2, minWidth: 30 }}
+                      className="button_search_booking"
                     >
                       Search
                     </ButtonMui>

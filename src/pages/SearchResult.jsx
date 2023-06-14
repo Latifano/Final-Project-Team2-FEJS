@@ -31,6 +31,10 @@ function SearchResult() {
               </Button>
             </div>
           </div>
+          <div className="container_result_date">
+            <p>Selasa</p>
+            <p>01/03/2023</p>
+          </div>
         </Row>
       </Container>
     </>

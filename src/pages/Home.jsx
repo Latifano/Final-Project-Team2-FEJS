@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Header from "../components/Header";
-import { Link } from "react-router-dom";
 
-import { Card, Form } from "react-bootstrap";
+import { Card } from "react-bootstrap";
 
 // import mui library
 import InputLabel from "@mui/material/InputLabel";
@@ -32,6 +31,7 @@ import banner_home from "../styles/images/img_banner.png";
 // import logo search
 import search_logo from "../styles/images/fi_search.png";
 
+import img_destination1 from "../styles/images/img_destination1.png";
 import takeoff_icon from "../styles/images/takeoff.png";
 import landing_icon from "../styles/images/landing.png";
 import date_icon from "../styles/images/date.png";
@@ -40,8 +40,6 @@ import seat_class from "../styles/images/seat_class.png";
 
 // import css
 import "../styles/home.css";
-import CardFavDestination from "../components/CardFavDestination";
-import Footer from "../components/Footer";
 
 function Home() {
   // First Line : Fav Destination
@@ -316,11 +314,24 @@ function Home() {
             {/* last Line Kategori Destinasi */}
 
             {/* Card Fav Destination */}
-            <CardFavDestination />
+            <div className="card-destination">
+              <Card className="card-kategori">
+                <Card.Img
+                  className="img_kategori"
+                  variant="top"
+                  src={img_destination1}
+                />
+                <Card.Body>
+                  <h6 className="destination">Jakarta - Bangkok</h6>
+                  <h6 className="airline">AirAsia</h6>
+                  <h6 className="date">20 - 30 Maret 2023</h6>
+                  <h6 className="price">Mulai dari IDR 950.000 </h6>
+                </Card.Body>
+              </Card>
+            </div>
           </div>
         </Row>
       </Container>
-      <Footer />
     </>
   );
 }

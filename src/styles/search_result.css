@@ -486,3 +486,14 @@
   order: 1;
   flex-grow: 0;
 }
+
+.container_accordion {
+  position: absolute;
+  top: 416px;
+  left: 555px;
+}
+
+.box_accordion {
+  width: 657px;
+  height: 127px;
+}

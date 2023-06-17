@@ -12,6 +12,7 @@ import Button from "react-bootstrap/Button";
 import { Link } from "react-router-dom";
 import Loading from "../components/search-result/Loading";
 import Empty from "../components/search-result/Empty";
+import CardResult from "../components/search-result/CardResult";
 
 function SearchResult() {
   return (
@@ -122,7 +123,8 @@ function SearchResult() {
           </div>
 
           {/* <Loading /> */}
-          <Empty />
+          {/* <Empty /> */}
+          <CardResult />
         </Row>
       </Container>
     </>

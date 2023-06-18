@@ -6,6 +6,7 @@ import Lupasandi from "./pages/Lupasandi";
 import Register from "./pages/Register";
 import Otp from "./pages/Otp";
 import SearchResult from "./pages/SearchResult";
+import DetailAccount from "./pages/Account";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
           <Route path="/register" element={<Register />} />
           <Route path="/verifikasi-otp" element={<Otp />} />
           <Route path="/search_result" element={<SearchResult />} />
+          <Route path="/akun" element={<DetailAccount />} />
         </Routes>
       </BrowserRouter>
     </>

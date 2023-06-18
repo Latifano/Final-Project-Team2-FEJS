@@ -1,15 +1,16 @@
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import logo from "../styles/images/logo.png";
 import "../styles/register.css";
 import React, { useState } from "react";
+import axios from "axios";
 
 const Register = () => {
+  const nav = useNavigate();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
   const [password, setPassword] = useState("");
-
   const handleNameChange = (e) => {
     setName(e.target.value);
   };
@@ -29,7 +30,27 @@ const Register = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Perform registration logic here
+    axios
+      .post(
+        "https://tiketku-api-development.up.railway.app/auth/register",
+        user
+      )
+      .then((response) => {
+        // Handle successful registration
+        console.log(response.data);
+        nav("/login");
+      })
+      .catch((error) => {
+        // Handle error
+        console.error(error);
+      });
+  };
+
+  const user = {
+    email: email,
+    phone: phoneNumber,
+    fullname: name,
+    password: password,
   };
 
   return (
@@ -89,7 +110,7 @@ const Register = () => {
                 type="submit"
                 className="custom-button-rgs text-light w-100"
               >
-                Masuk
+                Daftar
               </Button>
               <div className="login-link-container d-flex justify-content-center mt-3">
                 <span>Sudah punya akun?</span>

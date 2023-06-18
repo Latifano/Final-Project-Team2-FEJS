@@ -495,5 +495,5 @@
 
 .box_accordion {
   width: 657px;
-  height: 127px;
+  height: fit-content;
 }

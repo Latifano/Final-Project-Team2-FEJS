@@ -41,31 +41,35 @@ import seat_class from "../styles/images/seat_class.png";
 
 // import css
 import "../styles/home.css";
+import ModalPassenger from "../components/search-booking/ModalPassenger";
+
+import axios from "axios";
+
+// import dotenv from "dotenv";
+// dotenv.config(); // Load environment variables from .env
 
 function Home() {
-  // First Line : Fav Destination
-
-  const [airline, setAirline] = useState([]);
+  // Fetch airport
+  const [airport, setAirport] = useState([]);
 
   useEffect(() => {
-    fetchAirline();
+    axios
+      .get("https://tiketku-api-development.up.railway.app/airport")
+      .then((response) => {
+        setAirport(response.data.data);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
   }, []);
 
-  const fetchAirline = async () => {
-    try {
-      const response = await fetch("https://api.aviationstack.com/v1/flights");
-      const data = await response.json();
-      setAirline(data);
-    } catch (error) {
-      console.log("Error", error);
-    }
-  };
+  useEffect(() => {
+    console.log(airport);
+  }, [airport]);
 
-  // Modal Date Departure
-  // const [isModalOpen, setIsModalOpen] = useState(false);
+  // Modal Date Departure & Return
   const [datedep, setDatedep] = useState();
   const [dateret, setDateret] = useState();
-  // const [selectedDateReturn, setSelectedDateReturn] = useState("");
 
   const [showDeparture, setShowDeparture] = useState();
   const handleCloseDeparture = () => setShowDeparture(false);
@@ -83,7 +87,11 @@ function Home() {
     setDateret(date);
   };
 
-  // Last Line : Fav Destination
+  // Button Switch return
+  const [checked, setChecked] = useState(false);
+  const handleChange = (event) => {
+    setChecked(event.target.checked);
+  };
 
   return (
     <>
@@ -119,9 +127,9 @@ function Home() {
                       label="From"
                       // onChange={handleChange}
                     >
-                      <MenuItem value={"Jakarta"}>Jakarta</MenuItem>
-                      <MenuItem value={"Bandung"}>Bandung</MenuItem>
-                      <MenuItem value={"Semarang"}>Semarang</MenuItem>
+                      {airport.map((item) => (
+                        <MenuItem value={item.city}>{item.city}</MenuItem>
+                      ))}
                     </Select>
                     <FormHelperText>Dari mana anda?</FormHelperText>
                   </FormControl>
@@ -143,9 +151,9 @@ function Home() {
                       label="To"
                       // onChange={handleChange}
                     >
-                      <MenuItem value={"Jakarta"}>Jakarta</MenuItem>
-                      <MenuItem value={"Bandung"}>Bandung</MenuItem>
-                      <MenuItem value={"Semarang"}>Semarang</MenuItem>
+                      {airport.map((item) => (
+                        <MenuItem value={item.city}>{item.city}</MenuItem>
+                      ))}
                     </Select>
                     <FormHelperText>Mau kemana anda?</FormHelperText>
                   </FormControl>
@@ -167,9 +175,11 @@ function Home() {
                       label="Passenger"
                       // onChange={handleChange}
                     >
-                      <MenuItem value={"Jakarta"}>Dewasa</MenuItem>
-                      <MenuItem value={"Bandung"}>Anak</MenuItem>
-                      <MenuItem value={"Semarang"}>Bayi</MenuItem>
+                      <MenuItem value={"Jakarta"}>
+                        <ModalPassenger />
+                      </MenuItem>
+                      {/* <MenuItem value={"Bandung"}>Anak</MenuItem>
+                      <MenuItem value={"Semarang"}>Bayi</MenuItem> */}
                     </Select>
                     <FormHelperText>Berapa Penumpang?</FormHelperText>
                   </FormControl>
@@ -190,10 +200,16 @@ function Home() {
                   {/* Last Line Modal Departure */}
 
                   {/* Switch untuk mengaktifkan return */}
-                  <Switch size="small" />
+                  <Switch
+                    checked={checked}
+                    onChange={handleChange}
+                    size="small"
+                  />
 
                   {/* First Line Modal Return */}
-                  <Button onClick={handleOpenReturn}>Return : {dateret}</Button>
+                  <Button onClick={handleOpenReturn} disabled={!checked}>
+                    Return : {dateret}
+                  </Button>
                   <ModalReturn
                     show={showReturn}
                     onClose={handleCloseReturn}
@@ -324,7 +340,7 @@ function Home() {
                 />
                 <Card.Body>
                   <h6 className="destination">Jakarta - Bangkok</h6>
-                  <h6 className="airline">AirAsia</h6>
+                  <h6 className="airport">AirAsia</h6>
                   <h6 className="date">20 - 30 Maret 2023</h6>
                   <h6 className="price">Mulai dari IDR 950.000 </h6>
                 </Card.Body>
@@ -338,7 +354,7 @@ function Home() {
                 />
                 <Card.Body>
                   <h6 className="destination">Jakarta - Bangkok</h6>
-                  <h6 className="airline">AirAsia</h6>
+                  <h6 className="airport">AirAsia</h6>
                   <h6 className="date">20 - 30 Maret 2023</h6>
                   <h6 className="price">Mulai dari IDR 950.000 </h6>
                 </Card.Body>
@@ -352,7 +368,7 @@ function Home() {
                 />
                 <Card.Body>
                   <h6 className="destination">Jakarta - Bangkok</h6>
-                  <h6 className="airline">AirAsia</h6>
+                  <h6 className="airport">AirAsia</h6>
                   <h6 className="date">20 - 30 Maret 2023</h6>
                   <h6 className="price">Mulai dari IDR 950.000 </h6>
                 </Card.Body>
@@ -366,7 +382,7 @@ function Home() {
                 />
                 <Card.Body>
                   <h6 className="destination">Jakarta - Bangkok</h6>
-                  <h6 className="airline">AirAsia</h6>
+                  <h6 className="airport">AirAsia</h6>
                   <h6 className="date">20 - 30 Maret 2023</h6>
                   <h6 className="price">Mulai dari IDR 950.000 </h6>
                 </Card.Body>
@@ -380,7 +396,7 @@ function Home() {
                 />
                 <Card.Body>
                   <h6 className="destination">Jakarta - Bangkok</h6>
-                  <h6 className="airline">AirAsia</h6>
+                  <h6 className="airport">AirAsia</h6>
                   <h6 className="date">20 - 30 Maret 2023</h6>
                   <h6 className="price">Mulai dari IDR 950.000 </h6>
                 </Card.Body>

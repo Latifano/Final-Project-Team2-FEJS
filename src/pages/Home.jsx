@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Header from "../components/Header";
+import HeaderLogin from "../components/HeaderLogin";
 import { Link } from "react-router-dom";
 
 import { Card } from "react-bootstrap";
@@ -49,17 +50,6 @@ import axios from "axios";
 // dotenv.config(); // Load environment variables from .env
 
 function Home() {
-  // First Passenger
-  const [adults, setAdults] = useState(0);
-  const [kids, setKids] = useState(0);
-  const [infants, setInfants] = useState(0);
-  const [isDivVisible, setDivVisible] = useState(false);
-
-  const handleDivClick = () => {
-    setDivVisible(!isDivVisible);
-  };
-  // Last Passenger
-
   // First Fetch airport
   const [airport, setAirport] = useState([]);
 
@@ -73,11 +63,22 @@ function Home() {
         console.error(error);
       });
   }, []);
+  // Last Fetch airport
 
   useEffect(() => {
     console.log(airport);
   }, [airport]);
-  // Last Fetch airport
+
+  // First Passenger
+  const [adults, setAdults] = useState(0);
+  const [kids, setKids] = useState(0);
+  const [infants, setInfants] = useState(0);
+  const [isDivVisible, setDivVisible] = useState(false);
+
+  const handleDivClick = () => {
+    setDivVisible(!isDivVisible);
+  };
+  // Last Passenger
 
   // First Modal Date Departure & Return
   const [datedep, setDatedep] = useState();
@@ -98,18 +99,18 @@ function Home() {
   const handleDateSelectRet = (date) => {
     setDateret(date);
   };
-  // First Modal Date Departure & Return
+  // Last Modal Date Departure & Return
 
   // First Button Switch return
   const [checked, setChecked] = useState(false);
   const handleChange = (event) => {
     setChecked(event.target.checked);
   };
-  // last Button Switch return
+  // Last Button Switch return
 
   return (
     <>
-      <Header />
+      <HeaderLogin />
       <Container>
         <Row>
           <div className="banner_home">
@@ -126,7 +127,8 @@ function Home() {
                 </h6>
               </div>
               <div className="content_form">
-                <div>
+                {/* tambah flex biar rapi */}
+                <div style={{ display: "flex", alignItems: "baseline" }}>
                   <img
                     className="takeoff_icon"
                     src={takeoff_icon}
@@ -177,7 +179,6 @@ function Home() {
                     src={passenger_icon}
                     alt="Passenger Icon"
                   />
-
                   {/* First Line Passenger */}
                   <div
                     style={{
@@ -229,7 +230,7 @@ function Home() {
                               onClick={() => {
                                 setAdults(adults + 1);
                               }}
-                              variant="primary"
+                              variant="success"
                             >
                               +
                             </Button>{" "}
@@ -248,7 +249,7 @@ function Home() {
                               onClick={() => {
                                 setAdults(adults - 1);
                               }}
-                              variant="primary"
+                              variant="success"
                             >
                               -
                             </Button>{" "}
@@ -262,7 +263,7 @@ function Home() {
                               onClick={() => {
                                 setKids(kids + 1);
                               }}
-                              variant="primary"
+                              variant="success"
                             >
                               +
                             </Button>{" "}
@@ -281,7 +282,7 @@ function Home() {
                               onClick={() => {
                                 setKids(kids - 1);
                               }}
-                              variant="primary"
+                              variant="success"
                             >
                               -
                             </Button>{" "}
@@ -295,7 +296,7 @@ function Home() {
                               onClick={() => {
                                 setInfants(infants + 1);
                               }}
-                              variant="primary"
+                              variant="success"
                             >
                               +
                             </Button>{" "}
@@ -314,7 +315,7 @@ function Home() {
                               onClick={() => {
                                 setInfants(infants - 1);
                               }}
-                              variant="primary"
+                              variant="success"
                             >
                               -
                             </Button>{" "}
@@ -324,7 +325,7 @@ function Home() {
                       </div>
                     )}
                   </div>
-                  {/*  Line Passenger */}
+                  {/* last Line Passenger */}
                 </div>
 
                 <div>

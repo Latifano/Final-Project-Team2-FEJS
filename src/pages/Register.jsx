@@ -36,9 +36,13 @@ const Register = () => {
         user
       )
       .then((response) => {
+        const data = {
+          email,
+          token: response.data.data.token,
+        };
         // Handle successful registration
-        console.log(response.data);
-        nav("/login");
+        console.log(response.data.data);
+        nav("/verifikasi-otp", { state: data });
       })
       .catch((error) => {
         // Handle error

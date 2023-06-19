@@ -110,7 +110,8 @@ function Home() {
 
   return (
     <>
-      <HeaderLogin />
+      <Header />
+      {/* <HeaderLogin /> */}
       <Container>
         <Row>
           <div className="banner_home">

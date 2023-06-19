@@ -49,7 +49,18 @@ import axios from "axios";
 // dotenv.config(); // Load environment variables from .env
 
 function Home() {
-  // Fetch airport
+  // First Passenger
+  const [adults, setAdults] = useState(0);
+  const [kids, setKids] = useState(0);
+  const [infants, setInfants] = useState(0);
+  const [isDivVisible, setDivVisible] = useState(false);
+
+  const handleDivClick = () => {
+    setDivVisible(!isDivVisible);
+  };
+  // Last Passenger
+
+  // First Fetch airport
   const [airport, setAirport] = useState([]);
 
   useEffect(() => {
@@ -66,8 +77,9 @@ function Home() {
   useEffect(() => {
     console.log(airport);
   }, [airport]);
+  // Last Fetch airport
 
-  // Modal Date Departure & Return
+  // First Modal Date Departure & Return
   const [datedep, setDatedep] = useState();
   const [dateret, setDateret] = useState();
 
@@ -86,12 +98,14 @@ function Home() {
   const handleDateSelectRet = (date) => {
     setDateret(date);
   };
+  // First Modal Date Departure & Return
 
-  // Button Switch return
+  // First Button Switch return
   const [checked, setChecked] = useState(false);
   const handleChange = (event) => {
     setChecked(event.target.checked);
   };
+  // last Button Switch return
 
   return (
     <>
@@ -164,25 +178,153 @@ function Home() {
                     alt="Passenger Icon"
                   />
 
-                  <FormControl sx={{ m: 1, minWidth: 300 }}>
-                    <InputLabel id="passenger-select-label-id">
-                      Passenger
-                    </InputLabel>
-                    <Select
-                      labelId="passenger-select-label"
-                      id="passenger-select"
-                      // value={age}
-                      label="Passenger"
-                      // onChange={handleChange}
+                  {/* First Line Passenger */}
+                  <div
+                    style={{
+                      alignSelf: "start",
+                      marginTop: "8px",
+                      display: "flex",
+                      flexDirection: "column",
+                    }}
+                  >
+                    <div
+                      onClick={handleDivClick}
+                      style={{
+                        maxWidth: "250px",
+                        height: "fit-content",
+
+                        marginLeft: "20px",
+                      }}
+                      sx={{ m: 1, minWidth: 300 }}
                     >
-                      <MenuItem value={"Jakarta"}>
-                        <ModalPassenger />
-                      </MenuItem>
-                      {/* <MenuItem value={"Bandung"}>Anak</MenuItem>
-                      <MenuItem value={"Semarang"}>Bayi</MenuItem> */}
-                    </Select>
-                    <FormHelperText>Berapa Penumpang?</FormHelperText>
-                  </FormControl>
+                      <div
+                        style={{
+                          borderBottom: "1px solid blue",
+                        }}
+                      >
+                        <p>
+                          {adults} Dewasa, {kids} Anak, {infants} Bayi
+                        </p>
+                      </div>
+
+                      <FormHelperText>Berapa Penumpang?</FormHelperText>
+                    </div>
+                    {isDivVisible && (
+                      <div
+                        style={{
+                          backgroundColor: "white",
+                          marginLeft: "15px",
+                          position: "absolute",
+                          top: "65px",
+                          zIndex: "9999",
+                        }}
+                      >
+                        <form>
+                          <label>Adult</label>
+                          <div
+                            className="counter"
+                            style={{ display: "flex", alignItems: "center" }}
+                          >
+                            <Button
+                              onClick={() => {
+                                setAdults(adults + 1);
+                              }}
+                              variant="primary"
+                            >
+                              +
+                            </Button>{" "}
+                            <input
+                              value={adults}
+                              style={{
+                                height: "30px",
+                                margin: "3px",
+                                textAlign: "center",
+                                fontSize: "20px",
+                                width: "60px",
+                              }}
+                              type="text"
+                            />
+                            <Button
+                              onClick={() => {
+                                setAdults(adults - 1);
+                              }}
+                              variant="primary"
+                            >
+                              -
+                            </Button>{" "}
+                          </div>
+                          <label>Kid</label>
+                          <div
+                            className="counter"
+                            style={{ display: "flex", alignItems: "center" }}
+                          >
+                            <Button
+                              onClick={() => {
+                                setKids(kids + 1);
+                              }}
+                              variant="primary"
+                            >
+                              +
+                            </Button>{" "}
+                            <input
+                              value={kids}
+                              style={{
+                                height: "30px",
+                                margin: "3px",
+                                textAlign: "center",
+                                fontSize: "20px",
+                                width: "60px",
+                              }}
+                              type="text"
+                            />
+                            <Button
+                              onClick={() => {
+                                setKids(kids - 1);
+                              }}
+                              variant="primary"
+                            >
+                              -
+                            </Button>{" "}
+                          </div>
+                          <label>Infant</label>
+                          <div
+                            className="counter"
+                            style={{ display: "flex", alignItems: "center" }}
+                          >
+                            <Button
+                              onClick={() => {
+                                setInfants(infants + 1);
+                              }}
+                              variant="primary"
+                            >
+                              +
+                            </Button>{" "}
+                            <input
+                              value={infants}
+                              style={{
+                                height: "30px",
+                                margin: "3px",
+                                textAlign: "center",
+                                fontSize: "20px",
+                                width: "60px",
+                              }}
+                              type="text"
+                            />
+                            <Button
+                              onClick={() => {
+                                setInfants(infants - 1);
+                              }}
+                              variant="primary"
+                            >
+                              -
+                            </Button>{" "}
+                          </div>
+                          <button onClick={handleDivClick}>Submit</button>
+                        </form>
+                      </div>
+                    )}
+                  </div>
+                  {/*  Line Passenger */}
                 </div>
 
                 <div>

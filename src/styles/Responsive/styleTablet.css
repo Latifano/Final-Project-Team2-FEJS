@@ -85,14 +85,14 @@
   /* Seat Class */
   .seat_class_icon {
     position: relative;
-    top: 100px;
-    left: -215px;
+    top: -10px;
+    left: 120px;
   }
 
   .seat_class_box {
     position: absolute;
-    top: 100px;
-    left: -210px;
+    top: -5px;
+    left: 135px;
     min-width: 250px;
   }
 
@@ -100,32 +100,32 @@
   .date_icon {
     margin-right: 10px;
     position: absolute;
-    left: 200px;
+    left: -5px;
     top: 200px;
   }
 
   .button_departure {
     position: absolute;
     top: 200px;
-    left: 250px;
+    left: 40px;
   }
 
   .button_switch {
     position: absolute;
     top: 150px;
-    left: 200px;
+    left: -10px;
   }
 
   .button_return {
     position: relative;
-    left: 210px;
+    left: 0px;
     top: 160px;
   }
 
   .button_search_booking {
     position: relative;
-    left: 130px;
-    top: 100px;
+    left: -140px;
+    top: 210px;
   }
 
   /* ============= Last Line Form Booking =============*/

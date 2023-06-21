@@ -53,7 +53,18 @@ import axios from "axios";
 // import dotenv from "dotenv";
 // dotenv.config(); // Load environment variables from .env
 
-function Home() {
+function Home(props) {
+  console.log(props, "propsku");
+  const [tokentoHome, setTokentoHome] = useState(
+    props.tokenLogin ? props.tokenLogin : undefined
+  );
+
+  useEffect(() => {
+    setTokentoHome(props.tokenLogin);
+  }, [props]);
+
+  console.log(tokentoHome, "tokennn");
+
   // First Fetch airport
   const [airport, setAirport] = useState([]);
 
@@ -114,8 +125,15 @@ function Home() {
 
   return (
     <>
-      <Header />
-      {/* <HeaderLogin /> */}
+      {/* <Header />
+      <HeaderLogin /> */}
+
+      {tokentoHome === undefined || tokentoHome === null ? (
+        <Header />
+      ) : (
+        <HeaderLogin />
+      )}
+
       <Container>
         <Row>
           <div>

@@ -4,7 +4,7 @@ import "../styles/Login.css";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 
-const Login = () => {
+const Login = (props) => {
   const nav = useNavigate();
   const [token, setToken] = useState("");
   const [email, setEmail] = useState("");
@@ -18,6 +18,8 @@ const Login = () => {
     setPassword(e.target.value);
   };
 
+  localStorage.setItem("token", token);
+
   const handleSubmit = (e) => {
     e.preventDefault();
     axios
@@ -28,8 +30,10 @@ const Login = () => {
 
         axios.defaults.headers.common[
           "Authorization"
-        ] = `Bearer ${response.data.token}`;
+        ] = `Bearer ${response.data.data.token}`;
         nav("/");
+        props.tokenLoginFromApp(response.data.data.token);
+        localStorage.setItem("token", response.data.data.token);
       })
       .catch((error) => {
         // Handle error

@@ -41,7 +41,11 @@ import passenger_icon from "../styles/images/passenger.png";
 import seat_class from "../styles/images/seat_class.png";
 
 // import css
-import "../styles/home.css";
+// import "../styles/home.css";
+import "../styles/Responsive/styleEkstraDesktop.css";
+import "../styles/Responsive/styleDesktop.css";
+import "../styles/Responsive/styleTablet.css";
+import "../styles/Responsive/styleMobile.css";
 import ModalPassenger from "../components/search-booking/ModalPassenger";
 
 import axios from "axios";
@@ -114,8 +118,8 @@ function Home() {
       {/* <HeaderLogin /> */}
       <Container>
         <Row>
-          <div className="banner_home">
-            <img src={banner_home} alt="Banner Home" />
+          <div>
+            <img src={banner_home} alt="Banner Home" className="banner_home" />
           </div>
         </Row>
         <Row>

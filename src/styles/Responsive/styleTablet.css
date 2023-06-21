@@ -1,9 +1,10 @@
 @media only screen and (min-width: 577px) and (max-width: 768px) {
   .banner_home {
     position: absolute;
-    width: 10%;
-    height: 10%;
-    left: 18px;
+    width: 90%;
+    height: 20%;
+    left: 50px;
+    right: auto;
     top: 116px;
   }
 
@@ -20,7 +21,7 @@
     font-family: "CustomFont";
     font-style: normal;
     font-weight: 700;
-    font-size: 20px;
+    font-size: 15px;
     line-height: 30px;
     /* identical to box height, or 150% */
 
@@ -52,11 +53,10 @@
     gap: 10px;
 
     position: absolute;
-    width: 768px;
-    height: 298px;
-    left: auto;
-    right: auto;
-    top: 292px;
+    width: 500px;
+    height: 430px;
+    left: 120px;
+    top: 220px;
 
     background: #ffffff;
     border: 1px solid #d0d0d0;
@@ -66,25 +66,78 @@
     border-radius: 12px;
   }
 
+  .landing_icon {
+    margin-left: 20px;
+  }
+
+  /* Passenger */
+  .passenger_icon {
+    position: absolute;
+    top: 115px;
+  }
+
+  .passenger_wrap {
+    position: absolute;
+    left: 10px;
+    top: 100px;
+  }
+
+  /* Seat Class */
+  .seat_class_icon {
+    position: relative;
+    top: 100px;
+    left: -215px;
+  }
+
   .seat_class_box {
     position: absolute;
-    left: 35px;
+    top: 100px;
+    left: -210px;
+    min-width: 250px;
+  }
+
+  /* Tanggal */
+  .date_icon {
+    margin-right: 10px;
+    position: absolute;
+    left: 200px;
+    top: 200px;
+  }
+
+  .button_departure {
+    position: absolute;
+    top: 200px;
+    left: 250px;
+  }
+
+  .button_switch {
+    position: absolute;
+    top: 150px;
+    left: 200px;
+  }
+
+  .button_return {
+    position: relative;
+    left: 210px;
+    top: 160px;
   }
 
   .button_search_booking {
     position: relative;
-    left: 30px;
+    left: 130px;
+    top: 100px;
   }
 
   /* ============= Last Line Form Booking =============*/
 
   /* ============= First Line Destinasi Favorit =============*/
+
   .title_destinasi {
     position: absolute;
     width: 139px;
     height: 24px;
-    left: 251px;
-    top: 622px;
+    left: 90px;
+    top: 660px;
 
     /* Title/16/Bold */
 
@@ -98,19 +151,10 @@
     color: #000000;
   }
 
-  .date_icon {
-    margin-right: 10px;
+  .icon_masuk {
+    margin-left: -20px;
+    margin-top: -5px;
   }
-
-  .seat_class_icon {
-    margin-left: 20px;
-    margin-right: -20px;
-  }
-
-  .landing_icon {
-    margin-left: 20px;
-  }
-
   .kategori {
     /* Auto layout */
 
@@ -121,10 +165,17 @@
     gap: 16px;
 
     position: absolute;
-    width: 817px;
+    width: 317px;
     height: 48px;
-    left: 251px;
-    top: 662px;
+    left: 40px;
+    right: auto;
+    top: 692px;
+  }
+
+  .text-masuk {
+    font-size: 10px;
+    margin-top: -5px;
+    margin-left: -10px;
   }
 
   .button_kategori {
@@ -138,8 +189,8 @@
     padding: 14px 24px;
     gap: 8px;
 
-    width: 126px;
-    height: 48px;
+    width: 70px;
+    height: 35px;
 
     /* Primary/Purple/04
 
@@ -164,7 +215,7 @@
   .card-destination {
     position: absolute;
     top: 742px;
-    left: 275px;
+    left: 30px;
     width: 166.94px;
     height: 194px;
 
@@ -177,7 +228,7 @@
 
   .card-kategori {
     position: absolute;
-    width: 166.94px;
+    width: 120px;
     height: auto;
     left: 0px;
     top: 0px;
@@ -195,9 +246,9 @@ FFFFFF
 
   .card-kategori2 {
     position: absolute;
-    width: 166.94px;
+    width: 120px;
     height: auto;
-    left: 190px;
+    left: 140px;
     top: 0px;
 
     background: #ffffff;
@@ -208,9 +259,9 @@ FFFFFF
 
   .card-kategori3 {
     position: absolute;
-    width: 166.94px;
+    width: 120px;
     height: auto;
-    left: 380px;
+    left: 280px;
     top: 0px;
 
     background: #ffffff;
@@ -221,9 +272,9 @@ FFFFFF
 
   .card-kategori4 {
     position: absolute;
-    width: 166.94px;
+    width: 120px;
     height: auto;
-    left: 570px;
+    left: 420px;
     top: 0px;
 
     background: #ffffff;
@@ -234,9 +285,9 @@ FFFFFF
 
   .card-kategori5 {
     position: absolute;
-    width: 166.94px;
+    width: 120px;
     height: auto;
-    left: 760px;
+    left: 560px;
     top: 0px;
 
     background: #ffffff;
@@ -250,7 +301,7 @@ FFFFFF
     font-family: "CustomFont";
     font-style: normal;
     font-weight: bold;
-    font-size: 14px;
+    font-size: 9px;
     line-height: 18px;
     /* or 150% */
 
@@ -262,7 +313,7 @@ FFFFFF
     font-family: "CustomFont";
     font-style: normal;
     font-weight: 700;
-    font-size: 13px;
+    font-size: 10px;
     line-height: 14px;
     /* identical to box height, or 140% */
 
@@ -273,7 +324,7 @@ FFFFFF
     font-family: "CustomFont";
     font-style: normal;
     font-weight: 500;
-    font-size: 12px;
+    font-size: 8px;
     line-height: 20px;
 
     /* identical to box height, or 200% */
@@ -287,7 +338,7 @@ FFFFFF
     font-family: "CustomFont";
     font-style: normal;
     font-weight: 400;
-    font-size: 12px;
+    font-size: 10px;
     line-height: 20px;
     /* identical to box height, or 167% */
 

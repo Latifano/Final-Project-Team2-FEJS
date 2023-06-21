@@ -139,7 +139,7 @@ function Home() {
                     src={takeoff_icon}
                     alt="Takeoff Icon"
                   />
-                  <FormControl sx={{ m: 1, minWidth: 200 }}>
+                  <FormControl sx={{ m: 1, minWidth: 150 }}>
                     <InputLabel id="from-select-label-id">From</InputLabel>
                     <Select
                       labelId="from-select-label"
@@ -163,7 +163,7 @@ function Home() {
                     alt="Landing Icon"
                   />
 
-                  <FormControl sx={{ m: 1, minWidth: 200 }}>
+                  <FormControl sx={{ m: 1, minWidth: 150 }}>
                     <InputLabel id="to-select-label-id">To</InputLabel>
                     <Select
                       labelId="to-select-label"
@@ -186,6 +186,7 @@ function Home() {
                   />
                   {/* First Line Passenger */}
                   <div
+                    className="passenger_wrap"
                     style={{
                       alignSelf: "start",
                       marginTop: "8px",
@@ -336,7 +337,10 @@ function Home() {
                 <div>
                   <img className="date_icon" src={date_icon} alt="Date Icon" />
                   {/* First Line Modal Departure */}
-                  <Button onClick={handleOpenDeparture}>
+                  <Button
+                    onClick={handleOpenDeparture}
+                    className="button_departure"
+                  >
                     Departure : {datedep}
                   </Button>
                   <ModalDeparture
@@ -352,10 +356,15 @@ function Home() {
                     checked={checked}
                     onChange={handleChange}
                     size="small"
+                    className="button_switch"
                   />
 
                   {/* First Line Modal Return */}
-                  <Button onClick={handleOpenReturn} disabled={!checked}>
+                  <Button
+                    onClick={handleOpenReturn}
+                    disabled={!checked}
+                    className="button_return"
+                  >
                     Return : {dateret}
                   </Button>
                   <ModalReturn
@@ -371,10 +380,7 @@ function Home() {
                     alt="Seat Class Icon"
                   />
 
-                  <FormControl
-                    sx={{ m: 1, minWidth: 250 }}
-                    className="seat_class_box"
-                  >
+                  <FormControl sx={{ m: 1 }} className="seat_class_box">
                     <InputLabel id="return-select-label-id">
                       Seat Class
                     </InputLabel>
@@ -412,7 +418,7 @@ function Home() {
           </div>
         </Row>
         <Row>
-          <div>
+          <div className="wrap_destination">
             {/* Title Destinasi */}
             <h6 className="title_destinasi">Destinasi Favorit</h6>
 
@@ -488,9 +494,12 @@ function Home() {
                 />
                 <Card.Body>
                   <h6 className="destination">Jakarta - Bangkok</h6>
-                  <h6 className="airport">AirAsia</h6>
+                  <h6 className="airline">AirAsia</h6>
                   <h6 className="date">20 - 30 Maret 2023</h6>
-                  <h6 className="price">Mulai dari IDR 950.000 </h6>
+                  <h6 className="price">
+                    Mulai dari <br />
+                    IDR 950.000
+                  </h6>
                 </Card.Body>
               </Card>
 
@@ -502,9 +511,12 @@ function Home() {
                 />
                 <Card.Body>
                   <h6 className="destination">Jakarta - Bangkok</h6>
-                  <h6 className="airport">AirAsia</h6>
+                  <h6 className="airline">AirAsia</h6>
                   <h6 className="date">20 - 30 Maret 2023</h6>
-                  <h6 className="price">Mulai dari IDR 950.000 </h6>
+                  <h6 className="price">
+                    Mulai dari <br />
+                    IDR 950.000
+                  </h6>
                 </Card.Body>
               </Card>
 
@@ -516,9 +528,13 @@ function Home() {
                 />
                 <Card.Body>
                   <h6 className="destination">Jakarta - Bangkok</h6>
-                  <h6 className="airport">AirAsia</h6>
+                  <h6 className="airline">AirAsia</h6>
                   <h6 className="date">20 - 30 Maret 2023</h6>
-                  <h6 className="price">Mulai dari IDR 950.000 </h6>
+                  <h6 className="price">
+                    Mulai dari
+                    <br />
+                    IDR 950.000
+                  </h6>
                 </Card.Body>
               </Card>
 
@@ -530,9 +546,12 @@ function Home() {
                 />
                 <Card.Body>
                   <h6 className="destination">Jakarta - Bangkok</h6>
-                  <h6 className="airport">AirAsia</h6>
+                  <h6 className="airline">AirAsia</h6>
                   <h6 className="date">20 - 30 Maret 2023</h6>
-                  <h6 className="price">Mulai dari IDR 950.000 </h6>
+                  <h6 className="price">
+                    Mulai dari <br />
+                    IDR 950.000
+                  </h6>
                 </Card.Body>
               </Card>
 
@@ -544,9 +563,11 @@ function Home() {
                 />
                 <Card.Body>
                   <h6 className="destination">Jakarta - Bangkok</h6>
-                  <h6 className="airport">AirAsia</h6>
+                  <h6 className="airline">AirAsia</h6>
                   <h6 className="date">20 - 30 Maret 2023</h6>
-                  <h6 className="price">Mulai dari IDR 950.000 </h6>
+                  <h6 className="price">
+                    Mulai dari <br /> IDR 950.000
+                  </h6>
                 </Card.Body>
               </Card>
             </div>

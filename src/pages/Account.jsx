@@ -122,7 +122,7 @@ const Account = () => {
           <Col md={{ span: 4, offset: 1 }}>
             <ListGroup variant="flush">
               <ListGroup.Item action className="pb-3">
-                <Link to={"/edit-profile"} style={linkStyle}>
+                <Link to={"/account"} style={linkStyle}>
                   <FiEdit3 className="link-style me-3" />
                   Ubah Profile
                 </Link>

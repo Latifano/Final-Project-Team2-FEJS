@@ -20,7 +20,7 @@
     font-family: "CustomFont";
     font-style: normal;
     font-weight: 700;
-    font-size: 20px;
+    font-size: 15px;
     line-height: 30px;
     /* identical to box height, or 150% */
 
@@ -31,6 +31,10 @@
     flex: none;
     order: 0;
     flex-grow: 0;
+  }
+
+  .nama_user {
+    color: #7126b5;
   }
 
   .content_form {

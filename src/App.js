@@ -8,6 +8,7 @@ import Otp from "./pages/Otp";
 import SearchResult from "./pages/SearchResult";
 import DetailAccount from "./pages/Account";
 import { useState } from "react";
+import Auth from "./private/auth";
 
 function App() {
   const [token, setToken] = useState(localStorage.getItem("token"));
@@ -28,7 +29,14 @@ function App() {
             path="/search_result"
             element={<SearchResult tokenLogin={token} />}
           />
-          <Route path="/akun" element={<DetailAccount />} />
+          <Route
+            path="/account"
+            element={
+              <Auth>
+                <DetailAccount />
+              </Auth>
+            }
+          />
         </Routes>
       </BrowserRouter>
     </>

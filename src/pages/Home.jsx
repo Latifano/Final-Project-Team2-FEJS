@@ -50,10 +50,8 @@ import ModalPassenger from "../components/search-booking/ModalPassenger";
 
 import axios from "axios";
 
-// import dotenv from "dotenv";
-// dotenv.config(); // Load environment variables from .env
-
 function Home(props) {
+  // First line HeaderLogin
   console.log(props, "propsku");
   const [tokentoHome, setTokentoHome] = useState(
     props.tokenLogin ? props.tokenLogin : undefined
@@ -64,6 +62,26 @@ function Home(props) {
   }, [props]);
 
   console.log(tokentoHome, "tokennn");
+  // Last line HeaderLogin
+
+  // First Line Get User Detail
+  const [name, setName] = useState();
+
+  useEffect(() => {
+    axios
+      .get("https://tiketku-api-development.up.railway.app/user/getDetail", {
+        headers: {
+          Authorization: localStorage.getItem("token"),
+        },
+      })
+      .then((response) => {
+        console.log(response.data.data);
+        setName(response.data.data.fullname);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }, []);
 
   // First Fetch airport
   const [airport, setAirport] = useState([]);
@@ -143,7 +161,8 @@ function Home(props) {
             <div className="frame_booking">
               <div>
                 <h6 className="title_form">
-                  Pilih Jadwal Penerbangan spesial di Tiketku!
+                  Hello <span className="nama_user">{name}</span> Pilih Jadwal
+                  Penerbangan spesial di Tiketku!
                 </h6>
               </div>
               <div className="content_form">

@@ -26,9 +26,6 @@ const Login = (props) => {
         // Handle successful registration
         console.log(response.data);
 
-        axios.defaults.headers.common[
-          "Authorization"
-        ] = `Bearer ${response.data.data.token}`;
         nav("/");
         props.tokenLoginFromApp(response.data.data.token);
         localStorage.setItem("token", response.data.data.token);

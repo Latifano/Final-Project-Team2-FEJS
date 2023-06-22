@@ -57,17 +57,10 @@ function HeaderLogin() {
               <Link to={"#"}>
                 <img src={icon_notif} alt="icon_notif" />
               </Link>
-              <Link to={"#"}>
+              <Link to={"/account"}>
                 <img src={icon_user} alt="icon_user" />
               </Link>
             </div>
-
-            {/* <Link to={"/login"}>
-              <Button className="button-masuk">
-                <img className="icon_masuk" src={icon_masuk} alt="Icon Masuk" />
-                <p className="text-masuk">Masuk</p>
-              </Button>
-            </Link> */}
           </Navbar.Collapse>
         </Container>
       </Navbar>

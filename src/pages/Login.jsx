@@ -18,8 +18,6 @@ const Login = (props) => {
     setPassword(e.target.value);
   };
 
-  localStorage.setItem("token", token);
-
   const handleSubmit = (e) => {
     e.preventDefault();
     axios

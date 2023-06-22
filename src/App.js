@@ -24,7 +24,10 @@ function App() {
           <Route path="/lupasandi" element={<Lupasandi />} />
           <Route path="/register" element={<Register />} />
           <Route path="/verifikasi-otp" element={<Otp />} />
-          <Route path="/search_result" element={<SearchResult />} />
+          <Route
+            path="/search_result"
+            element={<SearchResult tokenLogin={token} />}
+          />
           <Route path="/akun" element={<DetailAccount />} />
         </Routes>
       </BrowserRouter>

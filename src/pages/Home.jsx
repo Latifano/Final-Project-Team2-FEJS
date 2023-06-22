@@ -125,9 +125,6 @@ function Home(props) {
 
   return (
     <>
-      {/* <Header />
-      <HeaderLogin /> */}
-
       {tokentoHome === undefined || tokentoHome === null ? (
         <Header />
       ) : (

@@ -69,9 +69,14 @@
     border-radius: 12px;
   }
 
-  .button_switch {
-    margin-left: 11px;
-    margin-right: 11px;
+  .span_switch {
+    position: absolute;
+    left: 310px;
+  }
+
+  .span_return {
+    position: absolute;
+    left: 363px;
   }
 
   .takeoff_icon {

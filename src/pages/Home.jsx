@@ -113,7 +113,7 @@ function Home(props) {
   };
   // Last Passenger
 
-  // First Modal Date Departure & Return
+  // First Line Modal Date Departure & Return
   const [datedep, setDatedep] = useState();
   const [dateret, setDateret] = useState();
 
@@ -132,14 +132,28 @@ function Home(props) {
   const handleDateSelectRet = (date) => {
     setDateret(date);
   };
-  // Last Modal Date Departure & Return
+  // Last Line Modal Date Departure & Return
 
-  // First Button Switch return
+  // First Line Button Switch return
   const [checked, setChecked] = useState(false);
   const handleChange = (event) => {
     setChecked(event.target.checked);
   };
-  // Last Button Switch return
+  // Last Line Button Switch return
+
+  // First Line Search Flight
+  const [results, setResults] = useState([]);
+  const handleSearchFlight = async () => {
+    try {
+      const response = await axios.post(
+        "https://tiketku-api-development.up.railway.app/flight/search"
+      );
+      setResults(response.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  // Last Line Search Flight
 
   return (
     <>
@@ -390,26 +404,30 @@ function Home(props) {
                   {/* Last Line Modal Departure */}
 
                   {/* Switch untuk mengaktifkan return */}
-                  <Switch
-                    checked={checked}
-                    onChange={handleChange}
-                    size="small"
-                    className="button_switch"
-                  />
+                  <span className="span_switch">
+                    <Switch
+                      checked={checked}
+                      onChange={handleChange}
+                      size="small"
+                      className="button_switch"
+                    />
+                  </span>
 
                   {/* First Line Modal Return */}
-                  <Button
-                    onClick={handleOpenReturn}
-                    disabled={!checked}
-                    className="button_return"
-                  >
-                    Return : {dateret}
-                  </Button>
-                  <ModalReturn
-                    show={showReturn}
-                    onClose={handleCloseReturn}
-                    onSelectDate={handleDateSelectRet}
-                  />
+                  <span className="span_return">
+                    <Button
+                      onClick={handleOpenReturn}
+                      disabled={!checked}
+                      className="button_return"
+                    >
+                      Return : {dateret}
+                    </Button>
+                    <ModalReturn
+                      show={showReturn}
+                      onClose={handleCloseReturn}
+                      onSelectDate={handleDateSelectRet}
+                    />
+                  </span>
                   {/* Last Line Modal Return */}
 
                   <span className="span_seat_class">

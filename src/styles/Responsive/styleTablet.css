@@ -13,6 +13,7 @@
     /* Pilih Jadwal Penerbangan spesial di Tiketku! */
     position: absolute;
     right: 1px;
+    left: 25px;
     width: 459px;
     height: 30px;
 
@@ -21,7 +22,7 @@
     font-family: "CustomFont";
     font-style: normal;
     font-weight: 700;
-    font-size: 15px;
+    font-size: 14px;
     line-height: 30px;
     /* identical to box height, or 150% */
 
@@ -32,6 +33,10 @@
     flex: none;
     order: 0;
     flex-grow: 0;
+  }
+
+  .nama_user {
+    color: #7126b5;
   }
 
   .content_form {
@@ -124,8 +129,8 @@
 
   .button_search_booking {
     position: relative;
-    left: -140px;
-    top: 210px;
+    left: 140px;
+    top: 110px;
   }
 
   /* ============= Last Line Form Booking =============*/

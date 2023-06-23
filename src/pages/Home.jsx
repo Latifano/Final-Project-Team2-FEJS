@@ -96,11 +96,11 @@ function Home(props) {
         console.error(error);
       });
   }, []);
-  // Last Fetch airport
 
   useEffect(() => {
     console.log(airport);
   }, [airport]);
+  // Last Fetch airport
 
   // First Passenger
   const [adults, setAdults] = useState(0);
@@ -161,7 +161,7 @@ function Home(props) {
             <div className="frame_booking">
               <div>
                 <h6 className="title_form">
-                  Hello <span className="nama_user">{name}</span> Pilih Jadwal
+                  Hello <span className="nama_user">{name}</span> ! Pilih Jadwal
                   Penerbangan spesial di Tiketku!
                 </h6>
               </div>
@@ -183,13 +183,15 @@ function Home(props) {
                       // onChange={handleChange}
                     >
                       {airport.map((item) => (
-                        <MenuItem value={item.city}>{item.city}</MenuItem>
+                        <MenuItem value={item.city}>
+                          {item.city} - {item.airport_iata}
+                        </MenuItem>
                       ))}
                     </Select>
                     <FormHelperText>Dari mana anda?</FormHelperText>
                   </FormControl>
 
-                  <CachedIcon sx={{ fontSize: 32 }} />
+                  <CachedIcon sx={{ fontSize: 32, marginLeft: 5 }} />
 
                   <img
                     className="landing_icon"
@@ -207,7 +209,9 @@ function Home(props) {
                       // onChange={handleChange}
                     >
                       {airport.map((item) => (
-                        <MenuItem value={item.city}>{item.city}</MenuItem>
+                        <MenuItem value={item.city}>
+                          {item.city} - {item.airport_iata}
+                        </MenuItem>
                       ))}
                     </Select>
                     <FormHelperText>Mau kemana anda?</FormHelperText>
@@ -408,43 +412,46 @@ function Home(props) {
                   />
                   {/* Last Line Modal Return */}
 
-                  <img
-                    className="seat_class_icon"
-                    src={seat_class}
-                    alt="Seat Class Icon"
-                  />
+                  <span className="span_seat_class">
+                    <img
+                      className="seat_class_icon"
+                      src={seat_class}
+                      alt="Seat Class Icon"
+                    />
 
-                  <FormControl sx={{ m: 1 }} className="seat_class_box">
-                    <InputLabel id="return-select-label-id">
-                      Seat Class
-                    </InputLabel>
-                    <Select
-                      labelId="return-select-label"
-                      id="return-select"
-                      // value={age}
-                      label="Seat Class"
-                      // onChange={handleChange}
-                    >
-                      <MenuItem value={"Economy"}>Economy</MenuItem>
-                      <MenuItem value={"Premium Economy"}>
-                        Premium Economy
-                      </MenuItem>
-                      <MenuItem value={"Business"}>Business</MenuItem>
-                      <MenuItem value={"First Class"}>First Class</MenuItem>
-                    </Select>
-                    <FormHelperText>Kelas Penerbangan</FormHelperText>
-                  </FormControl>
-
-                  <Link to={"/search_result"}>
-                    <ButtonMui
-                      variant="contained"
-                      size="large"
-                      sx={{ m: 2, minWidth: 30 }}
-                      className="button_search_booking"
-                    >
-                      Search
-                    </ButtonMui>
-                  </Link>
+                    <FormControl sx={{ m: 1 }} className="seat_class_box">
+                      <InputLabel id="return-select-label-id">
+                        Seat Class
+                      </InputLabel>
+                      <Select
+                        labelId="return-select-label"
+                        id="return-select"
+                        // value={age}
+                        label="Seat Class"
+                        // onChange={handleChange}
+                      >
+                        <MenuItem value={"Economy"}>Economy</MenuItem>
+                        <MenuItem value={"Premium Economy"}>
+                          Premium Economy
+                        </MenuItem>
+                        <MenuItem value={"Business"}>Business</MenuItem>
+                        <MenuItem value={"First Class"}>First Class</MenuItem>
+                      </Select>
+                      <FormHelperText>Kelas Penerbangan</FormHelperText>
+                    </FormControl>
+                  </span>
+                  <div className="container_search">
+                    <Link to={"/search_result"}>
+                      <ButtonMui
+                        variant="contained"
+                        size="large"
+                        sx={{ m: 2, minWidth: 30 }}
+                        className="button_search_booking"
+                      >
+                        CARI PENERBANGAN
+                      </ButtonMui>
+                    </Link>
+                  </div>
                 </div>
               </div>
             </div>

@@ -62,20 +62,20 @@ const DetailPesanan = () => {
                 <BsGeoAltFill />
                 <div>
                   <h6 className="fw-bold">Jakarta</h6>
-                  <p className="mb-1">5 Maret 2023</p>
-                  <p>19:10</p>
+                  <p className="mb-1">1 Maret 2023</p>
+                  <p>07:00</p>
                 </div>
               </div>
               <div className="d-flex flex-column justify-content-center align-items-center">
-                <p className="mb-0">4h 0m</p>
+                <p className="mb-0">1h 15m</p>
                 <hr className="w-400" />
               </div>
               <div className="d-flex justify-content-center gap-2">
                 <BsGeoAltFill />
                 <div>
-                  <h6>Melbourne</h6>
-                  <p className="mb-1">5 Maret 2023</p>
-                  <p>21:10</p>
+                  <h6>Bali</h6>
+                  <p className="mb-1">1 Maret 2023</p>
+                  <p>08:15</p>
                 </div>
               </div>
             </Card.Text>
@@ -83,13 +83,13 @@ const DetailPesanan = () => {
             <Card.Text className="d-flex align-items-center justify-content-between">
               <div>
                 <h6 className="fw-bold">Booking Code:</h6>
-                <p>6723y2GHK</p>
+                <p>6756232OG</p>
               </div>
               <div>
                 <h6 className="fw-bold">Class:</h6>
-                <p>Economy</p>
+                <p>Business</p>
               </div>
-              <h6 className="fw-bold price">IDR 9.850.000</h6>
+              <h6 className="fw-bold price">IDR 3.250.000</h6>
             </Card.Text>
           </Card.Body>
         </Card>
@@ -107,20 +107,20 @@ const DetailPesanan = () => {
                 <BsGeoAltFill />
                 <div>
                   <h6 className="fw-bold">Jakarta</h6>
-                  <p className="mb-1">5 Maret 2023</p>
-                  <p>19:10</p>
+                  <p className="mb-1">11 Feb 2023</p>
+                  <p>07:00</p>
                 </div>
               </div>
               <div className="d-flex flex-column justify-content-center align-items-center">
-                <p className="mb-0">4h 0m</p>
+                <p className="mb-0">1h 15m</p>
                 <hr className="w-400" />
               </div>
               <div className="d-flex justify-content-center gap-2">
                 <BsGeoAltFill />
                 <div>
-                  <h6>Melbourne</h6>
-                  <p className="mb-1">5 Maret 2023</p>
-                  <p>21:10</p>
+                  <h6>Medan</h6>
+                  <p className="mb-1">11 Feb 2023</p>
+                  <p>08:15</p>
                 </div>
               </div>
             </Card.Text>
@@ -128,14 +128,14 @@ const DetailPesanan = () => {
             <Card.Text className="d-flex align-items-center justify-content-between">
               <div>
                 <h6 className="fw-bold">Booking Code:</h6>
-                <p>6723y2GHK</p>
+                <p>6OIU965667G</p>
               </div>
               <div>
                 <h6 className="fw-bold">Class:</h6>
                 <p>Economy</p>
               </div>
               <div className="price">
-                <b>IDR 9.850.000</b>
+                <b>IDR 2.950.000</b>
               </div>
             </Card.Text>
           </Card.Body>

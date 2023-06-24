@@ -7,6 +7,7 @@ import Register from "./pages/Register";
 import Otp from "./pages/Otp";
 import SearchResult from "./pages/SearchResult";
 import DetailAccount from "./pages/Account";
+import RiwayatPemesanan from "./pages/Riwayat";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
           <Route path="/verifikasi-otp" element={<Otp />} />
           <Route path="/search_result" element={<SearchResult />} />
           <Route path="/akun" element={<DetailAccount />} />
+          <Route path="/riwayat" element={<RiwayatPemesanan />} />
         </Routes>
       </BrowserRouter>
     </>

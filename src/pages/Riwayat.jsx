@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Button, Col, Container, Form, InputGroup, Modal, Row} from "react-bootstrap";
 import { BsArrowLeftShort, BsFunnel, BsSearch } from "react-icons/bs";
-import HistoryCard from "../components/HistoryCard";
+import DetailPesanan from "../components/DetailPesanan";
 import "../styles/history.css";
 import HeaderLogin from "../components/HeaderLogin";
 import { Link } from "react-router-dom";
@@ -51,7 +51,7 @@ const History = () => {
 
         <Row className="mt-4">
           <Col>
-            <HistoryCard />
+            <DetailPesanan />
           </Col>
 
           <Col>

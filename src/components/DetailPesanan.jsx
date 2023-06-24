@@ -3,7 +3,7 @@ import { Card, Button } from "react-bootstrap";
 import "../styles/history.css";
 import { BsGeoAltFill} from "react-icons/bs";
 
-const HistoryCard = () => {
+const DetailPesanan = () => {
   return (
     <div>
       <div className="issued mb-3">
@@ -145,4 +145,4 @@ const HistoryCard = () => {
   );
 };
 
-export default HistoryCard;
+export default DetailPesanan;

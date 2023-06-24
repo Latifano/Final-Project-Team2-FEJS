@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Header from "../components/Header";
 import { Container, Row } from "react-bootstrap";
 import "../styles/search_result.css";
@@ -13,11 +13,25 @@ import { Link } from "react-router-dom";
 import Loading from "../components/search-result/Loading";
 import Empty from "../components/search-result/Empty";
 import CardResult from "../components/search-result/CardResult";
+import HeaderLogin from "../components/HeaderLogin";
 
-function SearchResult() {
+function SearchResult(props) {
+  const [tokentoSearchResult, setTokentoSearchResult] = useState(
+    props.tokenLogin ? props.tokenLogin : undefined
+  );
+
+  useEffect(() => {
+    setTokentoSearchResult(props.tokenLogin);
+  }, [props]);
+
   return (
     <>
-      <Header />
+      {tokentoSearchResult === undefined || tokentoSearchResult === null ? (
+        <Header />
+      ) : (
+        <HeaderLogin />
+      )}
+
       <Container>
         <Row>
           {/* Title */}

@@ -12,7 +12,7 @@
     /* Pilih Jadwal Penerbangan spesial di Tiketku! */
     position: absolute;
     right: 1px;
-    width: 459px;
+    width: 550px;
     height: 30px;
 
     /* Heading/20/Bold */
@@ -20,7 +20,7 @@
     font-family: "CustomFont";
     font-style: normal;
     font-weight: 700;
-    font-size: 20px;
+    font-size: 15px;
     line-height: 30px;
     /* identical to box height, or 150% */
 
@@ -31,6 +31,10 @@
     flex: none;
     order: 0;
     flex-grow: 0;
+  }
+
+  .nama_user {
+    color: #7126b5;
   }
 
   .content_form {
@@ -65,6 +69,38 @@
     border-radius: 12px;
   }
 
+  .span_switch {
+    position: absolute;
+    left: 310px;
+  }
+
+  .span_return {
+    position: absolute;
+    left: 363px;
+  }
+
+  .takeoff_icon {
+    margin-left: 55px;
+  }
+  .landing_icon {
+    margin-left: 45px;
+  }
+
+  .passenger_icon {
+    margin-left: 45px;
+  }
+
+  .date_icon {
+    margin-left: 55px;
+  }
+  .span_seat_class {
+    position: absolute;
+    top: 80px;
+    left: 590px;
+  }
+  .seat_class_icon {
+    margin-left: 45px;
+  }
   .seat_class_box {
     position: absolute;
     left: 35px;
@@ -73,6 +109,13 @@
   .button_search_booking {
     position: relative;
     left: 30px;
+    font-family: "CustomFont";
+  }
+
+  .container_search {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
   }
 
   /* ============= Last Line Form Booking =============*/
@@ -104,10 +147,6 @@
   .seat_class_icon {
     margin-left: 20px;
     margin-right: -20px;
-  }
-
-  .landing_icon {
-    margin-left: 20px;
   }
 
   .kategori {

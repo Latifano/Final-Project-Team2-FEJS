@@ -7,21 +7,38 @@ import Register from "./pages/Register";
 import Otp from "./pages/Otp";
 import SearchResult from "./pages/SearchResult";
 import DetailAccount from "./pages/Account";
-import RiwayatPemesanan from "./pages/Riwayat";
+import { useState } from "react";
+import Auth from "./private/auth";
+import RiwayatPemesanan from "./pages/Riwayat"
 
 function App() {
+  const [token, setToken] = useState(localStorage.getItem("token"));
+  console.log(token, "tokenkuu");
   return (
     <>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/login" element={<Login />} />
+          <Route path="/" element={<Home tokenLogin={token} />} />
+          <Route
+            path="/login"
+            element={<Login tokenLoginFromApp={setToken} />}
+          />
           <Route path="/lupasandi" element={<Lupasandi />} />
           <Route path="/register" element={<Register />} />
           <Route path="/verifikasi-otp" element={<Otp />} />
-          <Route path="/search_result" element={<SearchResult />} />
-          <Route path="/akun" element={<DetailAccount />} />
           <Route path="/riwayat" element={<RiwayatPemesanan />} />
+          <Route
+            path="/search_result"
+            element={<SearchResult tokenLogin={token} />}
+          />
+          <Route
+            path="/account"
+            element={
+              <Auth>
+                <DetailAccount />
+              </Auth>
+            }
+          />
         </Routes>
       </BrowserRouter>
     </>

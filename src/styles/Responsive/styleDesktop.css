@@ -13,7 +13,7 @@
     /* Pilih Jadwal Penerbangan spesial di Tiketku! */
     position: absolute;
     right: 1px;
-    width: 459px;
+    width: 550px;
     height: 30px;
 
     /* Heading/20/Bold */
@@ -21,7 +21,7 @@
     font-family: "CustomFont";
     font-style: normal;
     font-weight: 700;
-    font-size: 19px;
+    font-size: 16px;
     line-height: 30px;
     /* identical to box height, or 150% */
 
@@ -32,6 +32,10 @@
     flex: none;
     order: 0;
     flex-grow: 0;
+  }
+
+  .nama_user {
+    color: #7126b5;
   }
 
   .content_form {
@@ -73,8 +77,8 @@
 
   .button_search_booking {
     position: relative;
-    top: -30px;
-    left: 20px;
+    top: -5px;
+    left: 35px;
   }
 
   .date_icon {

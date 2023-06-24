@@ -50,10 +50,39 @@ import ModalPassenger from "../components/search-booking/ModalPassenger";
 
 import axios from "axios";
 
-// import dotenv from "dotenv";
-// dotenv.config(); // Load environment variables from .env
+function Home(props) {
+  // First line HeaderLogin
+  console.log(props, "propsku");
+  const [tokentoHome, setTokentoHome] = useState(
+    props.tokenLogin ? props.tokenLogin : undefined
+  );
 
-function Home() {
+  useEffect(() => {
+    setTokentoHome(props.tokenLogin);
+  }, [props]);
+
+  console.log(tokentoHome, "tokennn");
+  // Last line HeaderLogin
+
+  // First Line Get User Detail
+  const [name, setName] = useState();
+
+  useEffect(() => {
+    axios
+      .get("https://tiketku-api-development.up.railway.app/user/getDetail", {
+        headers: {
+          Authorization: localStorage.getItem("token"),
+        },
+      })
+      .then((response) => {
+        console.log(response.data.data);
+        setName(response.data.data.fullname);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }, []);
+
   // First Fetch airport
   const [airport, setAirport] = useState([]);
 
@@ -67,11 +96,11 @@ function Home() {
         console.error(error);
       });
   }, []);
-  // Last Fetch airport
 
   useEffect(() => {
     console.log(airport);
   }, [airport]);
+  // Last Fetch airport
 
   // First Passenger
   const [adults, setAdults] = useState(0);
@@ -84,7 +113,7 @@ function Home() {
   };
   // Last Passenger
 
-  // First Modal Date Departure & Return
+  // First Line Modal Date Departure & Return
   const [datedep, setDatedep] = useState();
   const [dateret, setDateret] = useState();
 
@@ -103,19 +132,37 @@ function Home() {
   const handleDateSelectRet = (date) => {
     setDateret(date);
   };
-  // Last Modal Date Departure & Return
+  // Last Line Modal Date Departure & Return
 
-  // First Button Switch return
+  // First Line Button Switch return
   const [checked, setChecked] = useState(false);
   const handleChange = (event) => {
     setChecked(event.target.checked);
   };
-  // Last Button Switch return
+  // Last Line Button Switch return
+
+  // First Line Search Flight
+  const [results, setResults] = useState([]);
+  const handleSearchFlight = async () => {
+    try {
+      const response = await axios.post(
+        "https://tiketku-api-development.up.railway.app/flight/search"
+      );
+      setResults(response.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  // Last Line Search Flight
 
   return (
     <>
-      <Header />
-      {/* <HeaderLogin /> */}
+      {tokentoHome === undefined || tokentoHome === null ? (
+        <Header />
+      ) : (
+        <HeaderLogin />
+      )}
+
       <Container>
         <Row>
           <div>
@@ -128,7 +175,8 @@ function Home() {
             <div className="frame_booking">
               <div>
                 <h6 className="title_form">
-                  Pilih Jadwal Penerbangan spesial di Tiketku!
+                  Hello <span className="nama_user">{name}</span> ! Pilih Jadwal
+                  Penerbangan spesial di Tiketku!
                 </h6>
               </div>
               <div className="content_form">
@@ -149,13 +197,15 @@ function Home() {
                       // onChange={handleChange}
                     >
                       {airport.map((item) => (
-                        <MenuItem value={item.city}>{item.city}</MenuItem>
+                        <MenuItem value={item.city}>
+                          {item.city} - {item.airport_iata}
+                        </MenuItem>
                       ))}
                     </Select>
                     <FormHelperText>Dari mana anda?</FormHelperText>
                   </FormControl>
 
-                  <CachedIcon sx={{ fontSize: 32 }} />
+                  <CachedIcon sx={{ fontSize: 32, marginLeft: 5 }} />
 
                   <img
                     className="landing_icon"
@@ -173,7 +223,9 @@ function Home() {
                       // onChange={handleChange}
                     >
                       {airport.map((item) => (
-                        <MenuItem value={item.city}>{item.city}</MenuItem>
+                        <MenuItem value={item.city}>
+                          {item.city} - {item.airport_iata}
+                        </MenuItem>
                       ))}
                     </Select>
                     <FormHelperText>Mau kemana anda?</FormHelperText>
@@ -352,65 +404,72 @@ function Home() {
                   {/* Last Line Modal Departure */}
 
                   {/* Switch untuk mengaktifkan return */}
-                  <Switch
-                    checked={checked}
-                    onChange={handleChange}
-                    size="small"
-                    className="button_switch"
-                  />
+                  <span className="span_switch">
+                    <Switch
+                      checked={checked}
+                      onChange={handleChange}
+                      size="small"
+                      className="button_switch"
+                    />
+                  </span>
 
                   {/* First Line Modal Return */}
-                  <Button
-                    onClick={handleOpenReturn}
-                    disabled={!checked}
-                    className="button_return"
-                  >
-                    Return : {dateret}
-                  </Button>
-                  <ModalReturn
-                    show={showReturn}
-                    onClose={handleCloseReturn}
-                    onSelectDate={handleDateSelectRet}
-                  />
+                  <span className="span_return">
+                    <Button
+                      onClick={handleOpenReturn}
+                      disabled={!checked}
+                      className="button_return"
+                    >
+                      Return : {dateret}
+                    </Button>
+                    <ModalReturn
+                      show={showReturn}
+                      onClose={handleCloseReturn}
+                      onSelectDate={handleDateSelectRet}
+                    />
+                  </span>
                   {/* Last Line Modal Return */}
 
-                  <img
-                    className="seat_class_icon"
-                    src={seat_class}
-                    alt="Seat Class Icon"
-                  />
+                  <span className="span_seat_class">
+                    <img
+                      className="seat_class_icon"
+                      src={seat_class}
+                      alt="Seat Class Icon"
+                    />
 
-                  <FormControl sx={{ m: 1 }} className="seat_class_box">
-                    <InputLabel id="return-select-label-id">
-                      Seat Class
-                    </InputLabel>
-                    <Select
-                      labelId="return-select-label"
-                      id="return-select"
-                      // value={age}
-                      label="Seat Class"
-                      // onChange={handleChange}
-                    >
-                      <MenuItem value={"Economy"}>Economy</MenuItem>
-                      <MenuItem value={"Premium Economy"}>
-                        Premium Economy
-                      </MenuItem>
-                      <MenuItem value={"Business"}>Business</MenuItem>
-                      <MenuItem value={"First Class"}>First Class</MenuItem>
-                    </Select>
-                    <FormHelperText>Kelas Penerbangan</FormHelperText>
-                  </FormControl>
-
-                  <Link to={"/search_result"}>
-                    <ButtonMui
-                      variant="contained"
-                      size="large"
-                      sx={{ m: 2, minWidth: 30 }}
-                      className="button_search_booking"
-                    >
-                      Search
-                    </ButtonMui>
-                  </Link>
+                    <FormControl sx={{ m: 1 }} className="seat_class_box">
+                      <InputLabel id="return-select-label-id">
+                        Seat Class
+                      </InputLabel>
+                      <Select
+                        labelId="return-select-label"
+                        id="return-select"
+                        // value={age}
+                        label="Seat Class"
+                        // onChange={handleChange}
+                      >
+                        <MenuItem value={"Economy"}>Economy</MenuItem>
+                        <MenuItem value={"Premium Economy"}>
+                          Premium Economy
+                        </MenuItem>
+                        <MenuItem value={"Business"}>Business</MenuItem>
+                        <MenuItem value={"First Class"}>First Class</MenuItem>
+                      </Select>
+                      <FormHelperText>Kelas Penerbangan</FormHelperText>
+                    </FormControl>
+                  </span>
+                  <div className="container_search">
+                    <Link to={"/search_result"}>
+                      <ButtonMui
+                        variant="contained"
+                        size="large"
+                        sx={{ m: 2, minWidth: 30 }}
+                        className="button_search_booking"
+                      >
+                        CARI PENERBANGAN
+                      </ButtonMui>
+                    </Link>
+                  </div>
                 </div>
               </div>
             </div>

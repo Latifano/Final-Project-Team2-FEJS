@@ -51,7 +51,7 @@ function HeaderLogin() {
               </Form>
             </Nav>
             <div className="container_menu">
-              <Link to={"#"}>
+              <Link to={"/riwayat"}>
                 <img src={icon_history} alt="icon_history" />
               </Link>
               <Link to={"#"}>

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Header from "../components/Header";
 import HeaderLogin from "../components/HeaderLogin";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import { Card } from "react-bootstrap";
 
@@ -52,6 +52,7 @@ import axios from "axios";
 import CardFavDestination from "../components/CardFavDestination";
 
 function Home(props) {
+  const nav = useNavigate();
   // First line HeaderLogin
   console.log(props, "propsku");
   const [tokentoHome, setTokentoHome] = useState(
@@ -144,17 +145,53 @@ function Home(props) {
   // Last Line Button Switch return
 
   // First Line Search Flight
-  // const [results, setResults] = useState([]);
-  // const handleSearchFlight = async () => {
-  //   try {
-  //     const response = await axios.post(
-  //       "https://tiketku-api-development.up.railway.app/flight/search"
-  //     );
-  //     setResults(response.data);
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // };
+
+  const [selectedValue, setSelectedValue] = useState();
+  const [selectedValueCityFrom, setSelectedValueCityFrom] = useState();
+  const [selectedValueCityTo, setSelectedValueCityTo] = useState();
+  const handleMenuItemClick = (e) => {
+    const { value } = e.target;
+    setSelectedValue(value);
+  };
+
+  const handleMenuItemClickCityFrom = (e) => {
+    const { value } = e.target;
+    setSelectedValueCityFrom(value);
+  };
+
+  const handleMenuItemClickCityTo = (e) => {
+    const { value } = e.target;
+    setSelectedValueCityTo(value);
+  };
+
+  const handleSearchFlight = (e) => {
+    console.log(dataPost);
+    e.preventDefault();
+    axios
+      .post(
+        "https://tiketku-development.up.railway.app/flight/search",
+        dataPost
+      )
+      .then((response) => {
+        // Handle Successful Registration
+        nav("/search_result", { state: response.data.data.flights });
+      })
+      .catch((error) => {
+        // Handle Error
+        console.log(error);
+      });
+  };
+
+  let dataPost = {
+    date: datedep,
+    adult: adults,
+    child: kids,
+    infant: infants,
+    seat_class: selectedValue,
+    arrival_airport_city: selectedValueCityTo,
+    departure_airport_city: selectedValueCityFrom,
+  };
+
   // Last Line Search Flight
 
   //  First Line Fav Destination
@@ -199,302 +236,308 @@ function Home(props) {
                   Penerbangan spesial di Tiketku!
                 </h6>
               </div>
-              <div className="content_form">
-                {/* tambah flex biar rapi */}
-                <div style={{ display: "flex", alignItems: "baseline" }}>
-                  <img
-                    className="takeoff_icon"
-                    src={takeoff_icon}
-                    alt="Takeoff Icon"
-                  />
-                  <FormControl sx={{ m: 1, minWidth: 150 }}>
-                    <InputLabel id="from-select-label-id">From</InputLabel>
-                    <Select
-                      labelId="from-select-label"
-                      id="from-select"
-                      // value={age}
-                      label="From"
-                      // onChange={handleChange}
-                    >
-                      {airport.map((item) => (
-                        <MenuItem value={item.city}>
-                          {item.city} - {item.airport_iata}
-                        </MenuItem>
-                      ))}
-                    </Select>
-                    <FormHelperText>Dari mana anda?</FormHelperText>
-                  </FormControl>
-
-                  <CachedIcon sx={{ fontSize: 32, marginLeft: 5 }} />
-
-                  <img
-                    className="landing_icon"
-                    src={landing_icon}
-                    alt="Landing Icon"
-                  />
-
-                  <FormControl sx={{ m: 1, minWidth: 150 }}>
-                    <InputLabel id="to-select-label-id">To</InputLabel>
-                    <Select
-                      labelId="to-select-label"
-                      id="to-select"
-                      // value={age}
-                      label="To"
-                      // onChange={handleChange}
-                    >
-                      {airport.map((item) => (
-                        <MenuItem value={item.city}>
-                          {item.city} - {item.airport_iata}
-                        </MenuItem>
-                      ))}
-                    </Select>
-                    <FormHelperText>Mau kemana anda?</FormHelperText>
-                  </FormControl>
-
-                  <img
-                    className="passenger_icon"
-                    src={passenger_icon}
-                    alt="Passenger Icon"
-                  />
-                  {/* First Line Passenger */}
-                  <div
-                    className="passenger_wrap"
-                    style={{
-                      alignSelf: "start",
-                      marginTop: "8px",
-                      display: "flex",
-                      flexDirection: "column",
-                    }}
-                  >
-                    <div
-                      onClick={handleDivClick}
-                      style={{
-                        maxWidth: "250px",
-                        height: "fit-content",
-
-                        marginLeft: "20px",
-                      }}
-                      sx={{ m: 1, minWidth: 300 }}
-                    >
-                      <div
-                        style={{
-                          borderBottom: "1px solid blue",
-                        }}
-                      >
-                        <p>
-                          {adults} Dewasa, {kids} Anak, {infants} Bayi
-                        </p>
-                      </div>
-
-                      <FormHelperText>Berapa Penumpang?</FormHelperText>
-                    </div>
-                    {isDivVisible && (
-                      <div
-                        style={{
-                          backgroundColor: "white",
-                          marginLeft: "15px",
-                          position: "absolute",
-                          top: "65px",
-                          zIndex: "9999",
-                        }}
-                      >
-                        <form>
-                          <label>Adult</label>
-                          <div
-                            className="counter"
-                            style={{ display: "flex", alignItems: "center" }}
-                          >
-                            <Button
-                              onClick={() => {
-                                setAdults(adults + 1);
-                              }}
-                              variant="success"
-                            >
-                              +
-                            </Button>{" "}
-                            <input
-                              value={adults}
-                              style={{
-                                height: "30px",
-                                margin: "3px",
-                                textAlign: "center",
-                                fontSize: "20px",
-                                width: "60px",
-                              }}
-                              type="text"
-                            />
-                            <Button
-                              onClick={() => {
-                                setAdults(adults - 1);
-                              }}
-                              variant="success"
-                            >
-                              -
-                            </Button>{" "}
-                          </div>
-                          <label>Kid</label>
-                          <div
-                            className="counter"
-                            style={{ display: "flex", alignItems: "center" }}
-                          >
-                            <Button
-                              onClick={() => {
-                                setKids(kids + 1);
-                              }}
-                              variant="success"
-                            >
-                              +
-                            </Button>{" "}
-                            <input
-                              value={kids}
-                              style={{
-                                height: "30px",
-                                margin: "3px",
-                                textAlign: "center",
-                                fontSize: "20px",
-                                width: "60px",
-                              }}
-                              type="text"
-                            />
-                            <Button
-                              onClick={() => {
-                                setKids(kids - 1);
-                              }}
-                              variant="success"
-                            >
-                              -
-                            </Button>{" "}
-                          </div>
-                          <label>Infant</label>
-                          <div
-                            className="counter"
-                            style={{ display: "flex", alignItems: "center" }}
-                          >
-                            <Button
-                              onClick={() => {
-                                setInfants(infants + 1);
-                              }}
-                              variant="success"
-                            >
-                              +
-                            </Button>{" "}
-                            <input
-                              value={infants}
-                              style={{
-                                height: "30px",
-                                margin: "3px",
-                                textAlign: "center",
-                                fontSize: "20px",
-                                width: "60px",
-                              }}
-                              type="text"
-                            />
-                            <Button
-                              onClick={() => {
-                                setInfants(infants - 1);
-                              }}
-                              variant="success"
-                            >
-                              -
-                            </Button>{" "}
-                          </div>
-                          <button onClick={handleDivClick}>Submit</button>
-                        </form>
-                      </div>
-                    )}
-                  </div>
-                  {/* last Line Passenger */}
-                </div>
-
-                <div>
-                  <img className="date_icon" src={date_icon} alt="Date Icon" />
-                  {/* First Line Modal Departure */}
-                  <Button
-                    onClick={handleOpenDeparture}
-                    className="button_departure"
-                  >
-                    Departure : {datedep}
-                  </Button>
-                  <ModalDeparture
-                    show={showDeparture}
-                    onClose={handleCloseDeparture}
-                    onSelectDate={handleDateSelectDep}
-                  />
-
-                  {/* Last Line Modal Departure */}
-
-                  {/* Switch untuk mengaktifkan return */}
-                  <span className="span_switch">
-                    <Switch
-                      checked={checked}
-                      onChange={handleChange}
-                      size="small"
-                      className="button_switch"
-                    />
-                  </span>
-
-                  {/* First Line Modal Return */}
-                  <span className="span_return">
-                    <Button
-                      onClick={handleOpenReturn}
-                      disabled={!checked}
-                      className="button_return"
-                    >
-                      Return : {dateret}
-                    </Button>
-                    <ModalReturn
-                      show={showReturn}
-                      onClose={handleCloseReturn}
-                      onSelectDate={handleDateSelectRet}
-                    />
-                  </span>
-                  {/* Last Line Modal Return */}
-
-                  <span className="span_seat_class">
+              <form onSubmit={handleSearchFlight}>
+                <div className="content_form">
+                  {/* tambah flex biar rapi */}
+                  <div style={{ display: "flex", alignItems: "baseline" }}>
                     <img
-                      className="seat_class_icon"
-                      src={seat_class}
-                      alt="Seat Class Icon"
+                      className="takeoff_icon"
+                      src={takeoff_icon}
+                      alt="Takeoff Icon"
+                    />
+                    <FormControl sx={{ m: 1, minWidth: 150 }}>
+                      <InputLabel id="from-select-label-id">From</InputLabel>
+                      <Select
+                        labelId="from-select-label"
+                        id="from-select"
+                        label="From"
+                        value={selectedValueCityFrom}
+                        onChange={handleMenuItemClickCityFrom}
+                      >
+                        {airport.map((item) => (
+                          <MenuItem value={item.city}>
+                            {item.city} - {item.airport_iata}
+                          </MenuItem>
+                        ))}
+                      </Select>
+                      <FormHelperText>Dari mana anda?</FormHelperText>
+                    </FormControl>
+
+                    <CachedIcon sx={{ fontSize: 32, marginLeft: 5 }} />
+
+                    <img
+                      className="landing_icon"
+                      src={landing_icon}
+                      alt="Landing Icon"
                     />
 
-                    <FormControl
-                      sx={{ m: 1, minWidth: 150 }}
-                      className="seat_class_box"
-                    >
-                      <InputLabel id="return-select-label-id">
-                        Seat Class
-                      </InputLabel>
+                    <FormControl sx={{ m: 1, minWidth: 150 }}>
+                      <InputLabel id="to-select-label-id">To</InputLabel>
                       <Select
-                        labelId="return-select-label"
-                        id="return-select"
-                        // value={age}
-                        label="Seat Class"
-                        // onChange={handleChange}
+                        labelId="to-select-label"
+                        id="to-select"
+                        label="To"
+                        value={selectedValueCityTo}
+                        onChange={handleMenuItemClickCityTo}
                       >
-                        <MenuItem value={"Economy"}>Economy</MenuItem>
-                        <MenuItem value={"Premium Economy"}>
-                          Premium Economy
-                        </MenuItem>
-                        <MenuItem value={"Business"}>Business</MenuItem>
-                        <MenuItem value={"First Class"}>First Class</MenuItem>
+                        {airport.map((item) => (
+                          <MenuItem value={item.city}>
+                            {item.city} - {item.airport_iata}
+                          </MenuItem>
+                        ))}
                       </Select>
-                      <FormHelperText>Kelas Penerbangan</FormHelperText>
+                      <FormHelperText>Mau kemana anda?</FormHelperText>
                     </FormControl>
-                  </span>
-                  <div className="container_search">
-                    <Link to={"/search_result"}>
-                      <ButtonMui
-                        variant="contained"
-                        size="large"
-                        sx={{ m: 2, minWidth: 30 }}
-                        className="button_search_booking"
+
+                    <img
+                      className="passenger_icon"
+                      src={passenger_icon}
+                      alt="Passenger Icon"
+                    />
+                    {/* First Line Passenger */}
+                    <div
+                      className="passenger_wrap"
+                      style={{
+                        alignSelf: "start",
+                        marginTop: "8px",
+                        display: "flex",
+                        flexDirection: "column",
+                      }}
+                    >
+                      <div
+                        onClick={handleDivClick}
+                        style={{
+                          maxWidth: "250px",
+                          height: "fit-content",
+
+                          marginLeft: "20px",
+                        }}
+                        sx={{ m: 1, minWidth: 300 }}
                       >
-                        CARI PENERBANGAN
-                      </ButtonMui>
-                    </Link>
+                        <div
+                          style={{
+                            borderBottom: "1px solid blue",
+                          }}
+                        >
+                          <p>
+                            {adults} Dewasa, {kids} Anak, {infants} Bayi
+                          </p>
+                        </div>
+
+                        <FormHelperText>Berapa Penumpang?</FormHelperText>
+                      </div>
+                      {isDivVisible && (
+                        <div
+                          style={{
+                            backgroundColor: "white",
+                            marginLeft: "15px",
+                            position: "absolute",
+                            top: "65px",
+                            zIndex: "9999",
+                          }}
+                        >
+                          <form>
+                            <label>Adult</label>
+                            <div
+                              className="counter"
+                              style={{ display: "flex", alignItems: "center" }}
+                            >
+                              <Button
+                                onClick={() => {
+                                  setAdults(adults + 1);
+                                }}
+                                variant="success"
+                              >
+                                +
+                              </Button>{" "}
+                              <input
+                                value={adults}
+                                style={{
+                                  height: "30px",
+                                  margin: "3px",
+                                  textAlign: "center",
+                                  fontSize: "20px",
+                                  width: "60px",
+                                }}
+                                type="text"
+                              />
+                              <Button
+                                onClick={() => {
+                                  setAdults(adults - 1);
+                                }}
+                                variant="success"
+                              >
+                                -
+                              </Button>{" "}
+                            </div>
+                            <label>Kid</label>
+                            <div
+                              className="counter"
+                              style={{ display: "flex", alignItems: "center" }}
+                            >
+                              <Button
+                                onClick={() => {
+                                  setKids(kids + 1);
+                                }}
+                                variant="success"
+                              >
+                                +
+                              </Button>{" "}
+                              <input
+                                value={kids}
+                                style={{
+                                  height: "30px",
+                                  margin: "3px",
+                                  textAlign: "center",
+                                  fontSize: "20px",
+                                  width: "60px",
+                                }}
+                                type="text"
+                              />
+                              <Button
+                                onClick={() => {
+                                  setKids(kids - 1);
+                                }}
+                                variant="success"
+                              >
+                                -
+                              </Button>{" "}
+                            </div>
+                            <label>Infant</label>
+                            <div
+                              className="counter"
+                              style={{ display: "flex", alignItems: "center" }}
+                            >
+                              <Button
+                                onClick={() => {
+                                  setInfants(infants + 1);
+                                }}
+                                variant="success"
+                              >
+                                +
+                              </Button>{" "}
+                              <input
+                                value={infants}
+                                style={{
+                                  height: "30px",
+                                  margin: "3px",
+                                  textAlign: "center",
+                                  fontSize: "20px",
+                                  width: "60px",
+                                }}
+                                type="text"
+                              />
+                              <Button
+                                onClick={() => {
+                                  setInfants(infants - 1);
+                                }}
+                                variant="success"
+                              >
+                                -
+                              </Button>{" "}
+                            </div>
+                            <button onClick={handleDivClick}>Submit</button>
+                          </form>
+                        </div>
+                      )}
+                    </div>
+                    {/* last Line Passenger */}
+                  </div>
+
+                  <div>
+                    <img
+                      className="date_icon"
+                      src={date_icon}
+                      alt="Date Icon"
+                    />
+                    {/* First Line Modal Departure */}
+                    <Button
+                      onClick={handleOpenDeparture}
+                      className="button_departure"
+                    >
+                      Departure : {datedep}
+                    </Button>
+                    <ModalDeparture
+                      show={showDeparture}
+                      onClose={handleCloseDeparture}
+                      onSelectDate={handleDateSelectDep}
+                    />
+
+                    {/* Last Line Modal Departure */}
+
+                    {/* Switch untuk mengaktifkan return */}
+                    <span className="span_switch">
+                      <Switch
+                        checked={checked}
+                        onChange={handleChange}
+                        size="small"
+                        className="button_switch"
+                      />
+                    </span>
+
+                    {/* First Line Modal Return */}
+                    <span className="span_return">
+                      <Button
+                        onClick={handleOpenReturn}
+                        disabled={!checked}
+                        className="button_return"
+                      >
+                        Return : {dateret}
+                      </Button>
+                      <ModalReturn
+                        show={showReturn}
+                        onClose={handleCloseReturn}
+                        onSelectDate={handleDateSelectRet}
+                      />
+                    </span>
+                    {/* Last Line Modal Return */}
+
+                    <span className="span_seat_class">
+                      <img
+                        className="seat_class_icon"
+                        src={seat_class}
+                        alt="Seat Class Icon"
+                      />
+
+                      <FormControl
+                        sx={{ m: 1, minWidth: 150 }}
+                        className="seat_class_box"
+                      >
+                        <InputLabel id="return-select-label-id">
+                          Seat Class
+                        </InputLabel>
+                        <Select
+                          labelId="return-select-label"
+                          id="return-select"
+                          label="Seat Class"
+                          value={selectedValue}
+                          onChange={handleMenuItemClick}
+                        >
+                          <MenuItem value={"ECONOMY"}>Economy</MenuItem>
+                          <MenuItem value={"PREMIUM ECONOMY"}>
+                            Premium Economy
+                          </MenuItem>
+                          <MenuItem value={"BUSINESS"}>Business</MenuItem>
+                          <MenuItem value={"FIRST CLASS"}>First Class</MenuItem>
+                        </Select>
+                        <FormHelperText>Kelas Penerbangan</FormHelperText>
+                      </FormControl>
+                    </span>
+                    <div className="container_search">
+                      <Link to={"/search_result"}>
+                        <ButtonMui
+                          variant="contained"
+                          size="large"
+                          sx={{ m: 2, minWidth: 30 }}
+                          className="button_search_booking"
+                        >
+                          CARI PENERBANGAN
+                        </ButtonMui>
+                      </Link>
+                    </div>
                   </div>
                 </div>
-              </div>
+              </form>
             </div>
             {/* First Line Form Booking Destinasi */}
           </div>

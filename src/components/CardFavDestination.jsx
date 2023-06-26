@@ -16,7 +16,10 @@ function CardFavDestination() {
           <h6 className="destination">Jakarta - Bangkok</h6>
           <h6 className="airline">AirAsia</h6>
           <h6 className="date">20 - 30 Maret 2023</h6>
-          <h6 className="price">Mulai dari IDR 950.000 </h6>
+          <h6 className="price">
+            Mulai dari <br />
+            IDR 950.000
+          </h6>
         </Card.Body>
       </Card>
 
@@ -30,7 +33,10 @@ function CardFavDestination() {
           <h6 className="destination">Jakarta - Bangkok</h6>
           <h6 className="airline">AirAsia</h6>
           <h6 className="date">20 - 30 Maret 2023</h6>
-          <h6 className="price">Mulai dari IDR 950.000 </h6>
+          <h6 className="price">
+            Mulai dari <br />
+            IDR 950.000
+          </h6>
         </Card.Body>
       </Card>
 
@@ -44,7 +50,11 @@ function CardFavDestination() {
           <h6 className="destination">Jakarta - Bangkok</h6>
           <h6 className="airline">AirAsia</h6>
           <h6 className="date">20 - 30 Maret 2023</h6>
-          <h6 className="price">Mulai dari IDR 950.000 </h6>
+          <h6 className="price">
+            Mulai dari
+            <br />
+            IDR 950.000
+          </h6>
         </Card.Body>
       </Card>
 
@@ -58,7 +68,10 @@ function CardFavDestination() {
           <h6 className="destination">Jakarta - Bangkok</h6>
           <h6 className="airline">AirAsia</h6>
           <h6 className="date">20 - 30 Maret 2023</h6>
-          <h6 className="price">Mulai dari IDR 950.000 </h6>
+          <h6 className="price">
+            Mulai dari <br />
+            IDR 950.000
+          </h6>
         </Card.Body>
       </Card>
 
@@ -72,7 +85,9 @@ function CardFavDestination() {
           <h6 className="destination">Jakarta - Bangkok</h6>
           <h6 className="airline">AirAsia</h6>
           <h6 className="date">20 - 30 Maret 2023</h6>
-          <h6 className="price">Mulai dari IDR 950.000 </h6>
+          <h6 className="price">
+            Mulai dari <br /> IDR 950.000
+          </h6>
         </Card.Body>
       </Card>
     </div>

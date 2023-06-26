@@ -49,6 +49,7 @@ import "../styles/Responsive/styleMobile.css";
 import ModalPassenger from "../components/search-booking/ModalPassenger";
 
 import axios from "axios";
+import CardFavDestination from "../components/CardFavDestination";
 
 function Home(props) {
   // First line HeaderLogin
@@ -82,8 +83,9 @@ function Home(props) {
         console.error(error);
       });
   }, []);
+  // Last Line Get User Detail
 
-  // First Fetch airport
+  // First Line Fetch airport
   const [airport, setAirport] = useState([]);
 
   useEffect(() => {
@@ -100,7 +102,7 @@ function Home(props) {
   useEffect(() => {
     console.log(airport);
   }, [airport]);
-  // Last Fetch airport
+  // Last Line Fetch airport
 
   // First Passenger
   const [adults, setAdults] = useState(0);
@@ -154,6 +156,24 @@ function Home(props) {
     }
   };
   // Last Line Search Flight
+
+  //  First Line Fav Destination
+  const [favDestination, setFavDestination] = useState([]);
+  useEffect(() => {
+    axios
+      .get("https://tiketku-api-development.up.railway.app/airport/favorite")
+      .then((response) => {
+        setFavDestination(response.data.data);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }, []);
+
+  useEffect(() => {
+    console.log(favDestination, "destinasiii");
+  }, [favDestination]);
+  //  Last Line Fav Destination
 
   return (
     <>
@@ -437,7 +457,10 @@ function Home(props) {
                       alt="Seat Class Icon"
                     />
 
-                    <FormControl sx={{ m: 1 }} className="seat_class_box">
+                    <FormControl
+                      sx={{ m: 1, minWidth: 150 }}
+                      className="seat_class_box"
+                    >
                       <InputLabel id="return-select-label-id">
                         Seat Class
                       </InputLabel>
@@ -482,6 +505,7 @@ function Home(props) {
             <h6 className="title_destinasi">Destinasi Favorit</h6>
 
             {/* First Line Kategori Destinasi */}
+
             <div className="kategori">
               <Button className="button_kategori">
                 <img
@@ -489,9 +513,12 @@ function Home(props) {
                   src={search_logo}
                   alt="Icon Search"
                 />
-                <p className="text-masuk">Semua</p>
+                {favDestination.map((item) => (
+                  <p className="text-masuk">{item.city}</p>
+                ))}
               </Button>
-              <Button className="button_kategori">
+
+              {/* <Button className="button_kategori">
                 <img
                   className="icon_masuk"
                   src={search_logo}
@@ -539,97 +566,13 @@ function Home(props) {
                   alt="Icon Search"
                 />
                 <p className="text-masuk">Afrika</p>
-              </Button>
+              </Button> */}
             </div>
+
             {/* last Line Kategori Destinasi */}
 
             {/* Card Fav Destination */}
-            <div className="card-destination">
-              <Card className="card-kategori">
-                <Card.Img
-                  className="img_kategori"
-                  variant="top"
-                  src={img_destination1}
-                />
-                <Card.Body>
-                  <h6 className="destination">Jakarta - Bangkok</h6>
-                  <h6 className="airline">AirAsia</h6>
-                  <h6 className="date">20 - 30 Maret 2023</h6>
-                  <h6 className="price">
-                    Mulai dari <br />
-                    IDR 950.000
-                  </h6>
-                </Card.Body>
-              </Card>
-
-              <Card className="card-kategori2">
-                <Card.Img
-                  className="img_kategori"
-                  variant="top"
-                  src={img_destination1}
-                />
-                <Card.Body>
-                  <h6 className="destination">Jakarta - Bangkok</h6>
-                  <h6 className="airline">AirAsia</h6>
-                  <h6 className="date">20 - 30 Maret 2023</h6>
-                  <h6 className="price">
-                    Mulai dari <br />
-                    IDR 950.000
-                  </h6>
-                </Card.Body>
-              </Card>
-
-              <Card className="card-kategori3">
-                <Card.Img
-                  className="img_kategori"
-                  variant="top"
-                  src={img_destination1}
-                />
-                <Card.Body>
-                  <h6 className="destination">Jakarta - Bangkok</h6>
-                  <h6 className="airline">AirAsia</h6>
-                  <h6 className="date">20 - 30 Maret 2023</h6>
-                  <h6 className="price">
-                    Mulai dari
-                    <br />
-                    IDR 950.000
-                  </h6>
-                </Card.Body>
-              </Card>
-
-              <Card className="card-kategori4">
-                <Card.Img
-                  className="img_kategori"
-                  variant="top"
-                  src={img_destination1}
-                />
-                <Card.Body>
-                  <h6 className="destination">Jakarta - Bangkok</h6>
-                  <h6 className="airline">AirAsia</h6>
-                  <h6 className="date">20 - 30 Maret 2023</h6>
-                  <h6 className="price">
-                    Mulai dari <br />
-                    IDR 950.000
-                  </h6>
-                </Card.Body>
-              </Card>
-
-              <Card className="card-kategori5">
-                <Card.Img
-                  className="img_kategori"
-                  variant="top"
-                  src={img_destination1}
-                />
-                <Card.Body>
-                  <h6 className="destination">Jakarta - Bangkok</h6>
-                  <h6 className="airline">AirAsia</h6>
-                  <h6 className="date">20 - 30 Maret 2023</h6>
-                  <h6 className="price">
-                    Mulai dari <br /> IDR 950.000
-                  </h6>
-                </Card.Body>
-              </Card>
-            </div>
+            <CardFavDestination />
           </div>
         </Row>
       </Container>

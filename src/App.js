@@ -9,6 +9,7 @@ import SearchResult from "./pages/SearchResult";
 import DetailAccount from "./pages/Account";
 import { useState } from "react";
 import Auth from "./private/auth";
+import RiwayatPemesanan from "./pages/Riwayat"
 
 function App() {
   const [token, setToken] = useState(localStorage.getItem("token"));
@@ -25,6 +26,7 @@ function App() {
           <Route path="/lupasandi" element={<Lupasandi />} />
           <Route path="/register" element={<Register />} />
           <Route path="/verifikasi-otp" element={<Otp />} />
+          <Route path="/riwayat" element={<RiwayatPemesanan />} />
           <Route
             path="/search_result"
             element={<SearchResult tokenLogin={token} />}

@@ -1,0 +1,44 @@
+.issued Button{
+    background-color: #73CA5C;
+    border: none;
+}
+
+.unpaid Button {
+    background-color: #FF0000;
+    border: none;
+}
+
+.cancelled Button{
+    background-color: #8A8A8A;
+    border: none;
+}
+
+.price {
+    color: #4B1979;
+}
+
+.my-4 {
+    background-color: #7126B5;
+    border: none;
+}
+
+.text-color {
+    color: #A06ECE;
+}
+
+.total-color {
+    color: #7126b5;
+}
+
+.info {
+    color: #4b1979;
+}
+
+.text-start {
+    background-color: #a06ece;
+    border: none;
+}
+
+.line-btn-fltr {
+    border-color: #7126b5;
+}

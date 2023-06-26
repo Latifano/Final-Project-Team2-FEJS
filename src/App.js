@@ -9,7 +9,8 @@ import SearchResult from "./pages/SearchResult";
 import DetailAccount from "./pages/Account";
 import { useState } from "react";
 import Auth from "./private/auth";
-import RiwayatPemesanan from "./pages/Riwayat"
+import RiwayatPemesanan from "./pages/Riwayat";
+import CardResult from "./components/search-result/CardResult";
 
 function App() {
   const [token, setToken] = useState(localStorage.getItem("token"));
@@ -31,6 +32,10 @@ function App() {
             path="/search_result"
             element={<SearchResult tokenLogin={token} />}
           />
+          {/* <Route
+            path="/card_result"
+            element={<CardResult tokenLogin={token} />}
+          /> */}
           <Route
             path="/account"
             element={

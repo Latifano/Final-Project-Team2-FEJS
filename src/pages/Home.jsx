@@ -70,7 +70,7 @@ function Home(props) {
 
   useEffect(() => {
     axios
-      .get("https://tiketku-api-development.up.railway.app/user/getDetail", {
+      .get("https://tiketku-development.up.railway.app/user/getDetail", {
         headers: {
           Authorization: localStorage.getItem("token"),
         },
@@ -90,7 +90,7 @@ function Home(props) {
 
   useEffect(() => {
     axios
-      .get("https://tiketku-api-development.up.railway.app/airport")
+      .get("https://tiketku-development.up.railway.app/airport")
       .then((response) => {
         setAirport(response.data.data);
       })
@@ -144,24 +144,24 @@ function Home(props) {
   // Last Line Button Switch return
 
   // First Line Search Flight
-  const [results, setResults] = useState([]);
-  const handleSearchFlight = async () => {
-    try {
-      const response = await axios.post(
-        "https://tiketku-api-development.up.railway.app/flight/search"
-      );
-      setResults(response.data);
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  // const [results, setResults] = useState([]);
+  // const handleSearchFlight = async () => {
+  //   try {
+  //     const response = await axios.post(
+  //       "https://tiketku-api-development.up.railway.app/flight/search"
+  //     );
+  //     setResults(response.data);
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
   // Last Line Search Flight
 
   //  First Line Fav Destination
   const [favDestination, setFavDestination] = useState([]);
   useEffect(() => {
     axios
-      .get("https://tiketku-api-development.up.railway.app/airport/favorite")
+      .get("https://tiketku-development.up.railway.app/airport/favorite")
       .then((response) => {
         setFavDestination(response.data.data);
       })

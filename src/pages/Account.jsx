@@ -1,5 +1,13 @@
 import React, { useEffect, useState } from "react";
-import { Button, Card, Col, Container, ListGroup, Row, Form} from "react-bootstrap";
+import {
+  Button,
+  Card,
+  Col,
+  Container,
+  ListGroup,
+  Row,
+  Form,
+} from "react-bootstrap";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { FiArrowLeft, FiEdit3, FiLogOut, FiSettings } from "react-icons/fi";
@@ -28,7 +36,7 @@ const Account = () => {
   };
   useEffect(() => {
     axios
-      .get("https://tiketku-api-development.up.railway.app/user/getDetail", {
+      .get("https://tiketku-development.up.railway.app/user/getDetail", {
         headers: {
           Authorization: localStorage.getItem("token"),
         },
@@ -58,7 +66,7 @@ const Account = () => {
     console.log(user);
     axios
       .put(
-        "https://tiketku-api-development.up.railway.app/user/updateProfile",
+        "https://tiketku-development.up.railway.app/user/updateProfile",
         user,
         {
           headers: {

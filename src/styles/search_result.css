@@ -489,11 +489,12 @@
 
 .container_accordion {
   position: absolute;
+  width: 50%;
   top: 416px;
   left: 555px;
 }
 
 .box_accordion {
-  width: 657px;
+  width: 650px;
   height: fit-content;
 }

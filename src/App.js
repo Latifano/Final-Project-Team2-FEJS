@@ -49,6 +49,14 @@ function App() {
               </Auth>
             }
           />
+          <Route
+            path="/checkout"
+            element={
+              <Auth>
+                <Checkout />
+              </Auth>
+            }
+          />
 
           {/* Checkout */}
           <Route path="/checkout" element={<Checkout />} />

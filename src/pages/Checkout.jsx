@@ -2,8 +2,8 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Datapemesanan from "../components/Datapemesanan";
 import Datapenumpang from "../components/Datapenumpang";
-import Matahari from "../styles/images/Matahari.png";
-import "../styles/Checkout.css";
+// import Matahari from "../styles/images/matahari.png";
+import "../styles/checkout.css";
 import {
   Alert,
   Breadcrumb,
@@ -85,7 +85,8 @@ const Checkout = () => {
 
             <Row className="d-flex align-items-center">
               <Col md={1}>
-                <img src={Matahari} alt="" />
+                {/* Logo maskapai */}
+                {/* <img src={Matahari} alt="" /> */}
               </Col>
               <Col md="auto">
                 <h6 className="fw-bold">Jet Air - Economy</h6>

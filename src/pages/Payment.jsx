@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Matahari from "../styles/images/Matahari.png";
+// import Matahari from "../styles/images/Matahari.png";
 import Payment from "../styles/images/Payment.png";
 import "../styles/Payment.css";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -149,9 +149,7 @@ const PaymentPage = () => {
             <hr />
 
             <Row>
-              <Col md={1}>
-                <img src={Matahari} alt="" />
-              </Col>
+              <Col md={1}>{/* <img src={Matahari} alt="" /> */}</Col>
               <Col md="auto">
                 <h6 className="fw-bold">Jet Air - Economy</h6>
                 <h6 className="fw-bold mb-4">JT - 203</h6>

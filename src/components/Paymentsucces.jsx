@@ -9,7 +9,7 @@ import {
   Alert,
 } from "react-bootstrap";
 import successImage from "../styles/images/success.png";
-import "../styles/stylepayment.css";
+import "../styles/stylepaymentsuccess.css";
 
 const Dashboard = () => {
   return (
@@ -51,7 +51,7 @@ const Dashboard = () => {
               className="text-center text-light border-0"
               style={{ background: "#73CA5C", borderRadius: "10px" }}
             >
-              Termina asih tas embayaran transaksi
+              Terima kasih atas pembayaran transaksi
             </Alert>
           </Col>
         </Row>

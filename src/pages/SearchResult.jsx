@@ -33,6 +33,8 @@ function SearchResult(props) {
   }, [props]);
   const nav = useNavigate();
   const loc = useLocation();
+
+  // Tempat menampung temporary data dari home
   const { data, penumpang, seat_class } = loc.state;
   useEffect(() => {
     console.log(seat_class);
@@ -222,7 +224,7 @@ function SearchResult(props) {
                       <div style={{ display: "flex", justifyContent: "end" }}>
                         <Button
                           onClick={() => {
-                            let dataPost = {
+                            let dataPostToGetDetail = {
                               adult: penumpang.adult,
                               child: penumpang.child,
                               infant: penumpang.infant,
@@ -233,7 +235,7 @@ function SearchResult(props) {
                             axios
                               .post(
                                 "https://tiketku-development.up.railway.app/flight/detail",
-                                dataPost
+                                dataPostToGetDetail
                               )
                               .then((response) => {
                                 // Handle Successful --

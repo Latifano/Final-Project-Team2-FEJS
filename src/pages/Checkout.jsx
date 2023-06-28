@@ -15,7 +15,8 @@ import {
 
 const Checkout = () => {
   const loc = useLocation();
-  const dataPost = loc.state;
+  // From Search Result
+  const dataPostToGetDetail = loc.state;
   // useEffect(() => {
   //   for (data.price.adult_count; data.price.adult_count > 0; data.price.adult_count--) {
   //     console.log("komponen data looping ke ",data.price.adult_count)
@@ -79,13 +80,15 @@ const Checkout = () => {
             <div className="mt-3">
               <h5 className="fw-bold">Detail Penerbangan</h5>
               <div className="d-flex justify-content-between align-items-center">
-                <h5 className="fw-bold">{dataPost.departure.departure_time}</h5>
+                <h5 className="fw-bold">
+                  {dataPostToGetDetail.departure.departure_time}
+                </h5>
                 <h6 className="fw-bold" style={{ color: "#7126B5" }}>
                   Keberangkatan
                 </h6>
               </div>
-              <p className="mb-0">{dataPost.departure.date}</p>
-              <p>{dataPost.departure.airport_name}</p>
+              <p className="mb-0">{dataPostToGetDetail.departure.date}</p>
+              <p>{dataPostToGetDetail.departure.airport_name}</p>
             </div>
 
             <hr />
@@ -97,13 +100,18 @@ const Checkout = () => {
               </Col>
               <Col md="auto">
                 <h6 className="fw-bold">
-                  {dataPost.info.airline_name} - {dataPost.info.seat_class}
+                  {dataPostToGetDetail.info.airline_name} -{" "}
+                  {dataPostToGetDetail.info.seat_class}
                 </h6>
-                <h6 className="fw-bold mb-4">{dataPost.info.airplane_model}</h6>
+                <h6 className="fw-bold mb-4">
+                  {dataPostToGetDetail.info.airplane_model}
+                </h6>
                 <h6 className="fw-bold">Informasi:</h6>
-                <p className="mb-0">Baggage {dataPost.info.free_baggage} kg</p>
                 <p className="mb-0">
-                  Cabin baggage {dataPost.info.cabin_baggage} kg
+                  Baggage {dataPostToGetDetail.info.free_baggage} kg
+                </p>
+                <p className="mb-0">
+                  Cabin baggage {dataPostToGetDetail.info.cabin_baggage} kg
                 </p>
                 <p>In Flight Entertainment</p>
               </Col>
@@ -113,13 +121,17 @@ const Checkout = () => {
 
             <div>
               <div className="d-flex justify-content-between align-items-center">
-                <h5 className="fw-bold">{dataPost.arrival.arrival_time}</h5>
+                <h5 className="fw-bold">
+                  {dataPostToGetDetail.arrival.arrival_time}
+                </h5>
                 <h6 className="fw-bold" style={{ color: "#7126B5" }}>
                   Kedatangan
                 </h6>
               </div>
-              <p className="mb-0">{dataPost.arrival.date}</p>
-              <p className="fw-bold">{dataPost.arrival.airport_name}</p>
+              <p className="mb-0">{dataPostToGetDetail.arrival.date}</p>
+              <p className="fw-bold">
+                {dataPostToGetDetail.arrival.airport_name}
+              </p>
             </div>
 
             <hr />
@@ -127,20 +139,20 @@ const Checkout = () => {
             <div>
               <h5 className="fw-bold">Rincian Harga</h5>
               <div className="d-flex justify-content-between align-items-center">
-                <p>{dataPost.price.adult_count} Adults</p>
-                <p>IDR {dataPost.price.adult_price}</p>
+                <p>{dataPostToGetDetail.price.adult_count} Adults</p>
+                <p>IDR {dataPostToGetDetail.price.adult_price}</p>
               </div>
               <div className="d-flex justify-content-between align-items-center">
-                <p>{dataPost.price.child_count} Baby</p>
-                <p>IDR {dataPost.price.child_price}</p>
+                <p>{dataPostToGetDetail.price.child_count} Baby</p>
+                <p>IDR {dataPostToGetDetail.price.child_price}</p>
               </div>
               <div className="d-flex justify-content-between align-items-center">
-                <p>{dataPost.price.infant_count} Baby</p>
-                <p>IDR {dataPost.price.infant_price}</p>
+                <p>{dataPostToGetDetail.price.infant_count} Baby</p>
+                <p>IDR {dataPostToGetDetail.price.infant_price}</p>
               </div>
               <div className="d-flex justify-content-between align-items-center">
                 <p>Tax</p>
-                <p>IDR {dataPost.price.tax}</p>
+                <p>IDR {dataPostToGetDetail.price.tax}</p>
               </div>
             </div>
 
@@ -149,7 +161,7 @@ const Checkout = () => {
             <div className="d-flex justify-content-between align-items-center">
               <h5 className="fw-bold txt-primary">Total</h5>
               <h5 className="fw-bold" style={{ color: "#7126B5" }}>
-                IDR {dataPost.price.total_price}
+                IDR {dataPostToGetDetail.price.total_price}
               </h5>
             </div>
             <br />

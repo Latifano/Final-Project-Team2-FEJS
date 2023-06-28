@@ -165,37 +165,15 @@ function Home(props) {
   };
 
   // Checkout
-  let dataPenumpang = {
+  // Untuk Menampung Data yg diinputkan dari Home
+  let dataPenumpangFromHome = {
     adult: adults,
     child: kids,
     infant: infants,
   };
 
-  const handleSearchFlight = (e) => {
-    console.log(dataPost, "Dataposttt");
-    e.preventDefault();
-    axios
-      .post(
-        "https://tiketku-development.up.railway.app/flight/search",
-        dataPost
-      )
-      .then((response) => {
-        let dataFlight = {
-          data: response.data.data.flights,
-          penumpang: dataPenumpang,
-          seat_class: selectedValue,
-        };
-        // Handle Successful --
-        nav("/search_result", { state: dataFlight });
-      })
-      .catch((error) => {
-        // Handle Error
-        // nav("/search_result", { state: [] });
-        console.log(error, "erorku");
-      });
-  };
-
-  let dataPost = {
+  // Untuk Menampung Data dari search result ke checkout
+  let dataPostToCheckout = {
     date: datedep,
     adult: adults,
     child: kids,
@@ -205,7 +183,32 @@ function Home(props) {
     departure_airport_city: selectedValueCityFrom,
   };
 
-  console.log(dataPost, "Dataposttt2");
+  const handleSearchFlight = (e) => {
+    console.log(dataPostToCheckout, "Dataposttt");
+    e.preventDefault();
+    axios
+      .post(
+        "https://tiketku-development.up.railway.app/flight/search",
+        dataPostToCheckout
+      )
+      .then((response) => {
+        // Untuk menampung data yang akan diberikan ke pages search result, (temporary)
+        let dataFlightToSearchResult = {
+          data: response.data.data.flights,
+          penumpang: dataPenumpangFromHome,
+          seat_class: selectedValue,
+        };
+        // Handle Successful --
+        nav("/search_result", { state: dataFlightToSearchResult });
+      })
+      .catch((error) => {
+        // Handle Error
+        // nav("/search_result", { state: [] });
+        console.log(error, "erorku");
+      });
+  };
+
+  console.log(dataPostToCheckout, "Dataposttt2");
 
   // Last Line Search Flight
 

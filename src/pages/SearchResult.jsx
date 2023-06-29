@@ -27,7 +27,6 @@ function SearchResult(props) {
   const [tokentoSearchResult, setTokentoSearchResult] = useState(
     props.tokenLogin ? props.tokenLogin : undefined
   );
-
   useEffect(() => {
     setTokentoSearchResult(props.tokenLogin);
   }, [props]);
@@ -238,9 +237,14 @@ function SearchResult(props) {
                                 dataPostToGetDetail
                               )
                               .then((response) => {
+                                const dataCheckout = {
+                                  dataPost: response.data.data,
+                                  flight_id: data.id,
+                                };
                                 // Handle Successful --
                                 // console.log(response.data)
-                                nav("/checkout", { state: response.data.data });
+                                // nav("/checkout", { state: response.data.data });
+                                nav("/checkout", { state: dataCheckout });
                               })
                               .catch((error) => {
                                 // Handle Error

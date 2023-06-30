@@ -19,7 +19,7 @@ import axios from "axios";
 
 const PaymentPage = () => {
   const loc = useLocation();
-  const { dataPost, flight_id } = loc.state;
+  const { dataPost, order_id } = loc.state;
 
   return (
     <>

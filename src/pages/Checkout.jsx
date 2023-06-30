@@ -479,25 +479,28 @@ const Checkout = () => {
   }
 
   // Passing Data Payment
-  // const nav = useNavigate();
-  // useEffect(() => {
-  //   axios
-  //     .get(
-  //       "https://tiketku-development.up.railway.app/order/${order_id}",
-  //       dataPost,
-  //       {
-  //         headers: {
-  //           Authorization: localStorage.getItem("token"),
-  //         },
-  //       }
-  //     )
-  //     .then((response) => {
-  //       nav("/payment", { state: dataPost });
-  //     })
-  //     .catch((error) => {
-  //       console.error(error);
-  //     });
-  // }, []);
+  const nav = useNavigate();
+
+  const handlePayButton = (e) => {
+    e.preventDefault();
+    console.log(dataPost, "data kee payment");
+    axios
+      .get(
+        `https://tiketku-development.up.railway.app/order/{order_id}`,
+        dataPost,
+        {
+          headers: {
+            Authorization: localStorage.getItem("token"),
+          },
+        }
+      )
+      .then((response) => {
+        nav("/payment", { state: dataPost });
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  };
 
   return (
     <>
@@ -640,8 +643,10 @@ const Checkout = () => {
               </h5>
             </div>
             <br />
-            <Link to="/Payment" className="w-100 pay">
-              Lanjut Bayar
+            <Link className="w-100 pay">
+              <Button onClick={handlePayButton} variant="danger">
+                Lanjut Bayar
+              </Button>
             </Link>
           </Col>
         </Row>

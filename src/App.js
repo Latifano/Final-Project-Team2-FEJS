@@ -15,12 +15,15 @@ import Checkout from "./pages/Checkout";
 import Payment from "./pages/Payment";
 import DetailPesanan from "./components/DetailPesanan";
 import PaymentSuccess from "./components/Paymentsucces";
+import { GoogleOAuthProvider } from "@react-oauth/google";
 
 function App() {
   const [token, setToken] = useState(localStorage.getItem("token"));
   console.log(token, "tokenkuu");
   return (
-    <>
+    <GoogleOAuthProvider
+      clientId={process.env.REACT_APP_GOOGLE_OAUTH_CLIENT_ID}
+    >
       <BrowserRouter>
         <Routes>
           {/* Home, logis & regis */}
@@ -64,7 +67,7 @@ function App() {
           <Route path="/paymentsuccess" element={<PaymentSuccess />} />
         </Routes>
       </BrowserRouter>
-    </>
+    </GoogleOAuthProvider>
   );
 }
 

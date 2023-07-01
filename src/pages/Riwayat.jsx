@@ -65,6 +65,8 @@ const History = () => {
       });
   };
 
+  console.log(dataById?.flight_detail?.passengers, "data passenger");
+
   useEffect(() => {
     getData();
   }, []);
@@ -72,6 +74,24 @@ const History = () => {
   useEffect(() => {
     getDataDetail(id);
   }, [id]);
+
+  // const elementPassenger = [];
+  // for (let i = 1; i <= dataById?.flight_detail?.passengers.length; i++) {
+  //   elementPassenger.push(
+  //     <p className="mb-0 fw-medium info">
+  //       <p>Penumpang {i}:</p>
+  //       <p>
+  //         {dataById?.flight_detail?.passengers?.map((item) => item.title)}{" "}
+  //         {dataById?.flight_detail?.passengers?.map((item) => item.fullname)}
+  //       </p>
+
+  //       <p>
+  //         KTP : {dataById?.flight_detail?.passengers?.map((item) => item.ktp)}
+  //       </p>
+  //     </p>
+  //   );
+  // }
+
   return (
     <>
       <HeaderLogin />
@@ -155,14 +175,16 @@ const History = () => {
                   {dataById?.flight_detail?.airplane?.flight_number}
                 </h6>
                 <h6 className="fw-bold">Informasi:</h6>
-                <p className="mb-0 fw-medium info">
-                  Penumpang 1:
-                  {/* {dataById?.flight_detail?.passenger?.title}{" "}
-                  {dataById?.flight_detail?.passenger?.fullname} */}
-                </p>
-                <p className="mb-0 fw-medium info">
-                  KTP :{/* {dataById.flight_detail.passenger.ktp} */}
-                </p>
+                {dataById.booking_code === undefined
+                  ? console.log("kosong")
+                  : dataById.flight_detail.passengers.map((item, index) => (
+                      <>
+                        <p className="mb-0 fw-medium info">
+                          Penumpang {index + 1}: {item.fullname}
+                        </p>
+                        <p>ID: {item.ktp} </p>
+                      </>
+                    ))}
               </Col>
             </Col>
 

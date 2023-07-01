@@ -35,7 +35,7 @@ function HeaderLogin() {
               style={{ maxHeight: "100px" }}
               navbarScroll
             >
-              <Navbar.Brand href="#">
+              <Navbar.Brand href="/">
                 <div className="logo">
                   <img src={logo} alt="Logo Tiket" />
                 </div>
@@ -54,7 +54,7 @@ function HeaderLogin() {
               <Link to={"/riwayat"}>
                 <img src={icon_history} alt="icon_history" />
               </Link>
-              <Link to={"#"}>
+              <Link to={"/notifikasi"}>
                 <img src={icon_notif} alt="icon_notif" />
               </Link>
               <Link to={"/account"}>

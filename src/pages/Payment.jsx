@@ -17,6 +17,7 @@ import {
 } from "react-bootstrap";
 import axios from "axios";
 import PaymentSuccess from "../../src/components/Paymentsucces";
+import HeaderLogin from "../components/HeaderLogin";
 
 const PaymentPage = () => {
   const loc = useLocation();
@@ -67,6 +68,7 @@ const PaymentPage = () => {
 
   return (
     <>
+      <HeaderLogin />
       {show ? (
         <PaymentSuccess />
       ) : (

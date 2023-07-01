@@ -4,6 +4,7 @@ import logo from "../styles/images/logo.png";
 import "../styles/register.css";
 import React, { useState } from "react";
 import axios from "axios";
+import GoogleLogin from "../components/GoogleLogin";
 
 const Register = () => {
   const nav = useNavigate();
@@ -119,6 +120,11 @@ const Register = () => {
                   Masuk di sini
                 </Link>
               </div>
+              <Row>
+                <Col className="text-center">
+                  <GoogleLogin buttonText="Register with Google 🚀" />
+                </Col>
+              </Row>
             </Form>
           </div>
         </Col>

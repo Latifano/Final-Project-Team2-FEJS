@@ -2,13 +2,11 @@ import React from "react";
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
 import "../styles/Lupasandi.css";
 
-
 const Lupasandi  = () => {
   return (
     <Container fluid className="vh-100">
       <Row className="h-100">
-        <Col className="d-flex align-items-center justify-content-center bg_color display-none">
-        </Col>
+        <Col className="d-flex align-items-center justify-content-center bg_color display-none"></Col>
         <Col className="d-flex align-items-center justify-content-center ">
           <div className="w-75">
             <h3 className="fw-bold">Reset Password</h3>
@@ -23,7 +21,10 @@ const Lupasandi  = () => {
                 </div>
                 <Form.Control type="password" placeholder="Ulangi password" />
               </Form.Group>
-              <Button type="submit" className="custom-button-rst text-light w-100">
+              <Button
+                type="submit"
+                className="custom-button-rst text-light w-100"
+              >
                 Simpan
               </Button>
             </Form>

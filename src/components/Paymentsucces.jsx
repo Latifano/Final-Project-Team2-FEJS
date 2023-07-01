@@ -77,7 +77,7 @@ const Dashboard = () => {
               size="md"
               className="custom-button-lgn text-light w-40"
               as={Link}
-              to="/"
+              to="/history"
             >
               Terbitkan Tiket
             </Button>{" "}

@@ -1,44 +1,38 @@
-.issued Button{
-    background-color: #73CA5C;
-    border: none;
-}
-
 .unpaid Button {
-    background-color: #FF0000;
-    border: none;
+  background-color: #ff0000;
+  border: none;
 }
 
-.cancelled Button{
-    background-color: #8A8A8A;
-    border: none;
+.cancelled Button {
+  background-color: #8a8a8a;
+  border: none;
 }
 
 .price {
-    color: #4B1979;
+  color: #4b1979;
 }
 
 .my-4 {
-    background-color: #7126B5;
-    border: none;
+  border: none;
 }
 
 .text-color {
-    color: #A06ECE;
+  color: #a06ece;
 }
 
 .total-color {
-    color: #7126b5;
+  color: #7126b5;
 }
 
 .info {
-    color: #4b1979;
+  color: #4b1979;
 }
 
 .text-start {
-    background-color: #a06ece;
-    border: none;
+  background-color: #a06ece;
+  border: none;
 }
 
 .line-btn-fltr {
-    border-color: #7126b5;
+  border-color: #7126b5;
 }

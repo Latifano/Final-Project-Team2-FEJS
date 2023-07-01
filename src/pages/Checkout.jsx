@@ -28,6 +28,22 @@ const Checkout = () => {
   //   console.log(orderId);
   // }, [orderId]);
   const [showInput, setShowInput] = useState(false);
+  const [country, setCountry] = useState();
+  useEffect(() => {
+    axios
+      .get(`https://tiketku-development.up.railway.app/country/`, {
+        headers: {
+          Authorization: localStorage.getItem("token"),
+        },
+      })
+      .then((response) => {
+        console.log(response.data.data);
+        setCountry(response.data.data);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }, []);
 
   const toggleInput = () => {
     setShowInput(!showInput);

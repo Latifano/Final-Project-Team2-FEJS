@@ -243,6 +243,7 @@ const History = () => {
                   ? "warning"
                   : "danger"
               }
+              to={dataById.status === "UNPAID" ? `/payment/${id}` : null}
             >
               {dataById.status === "PAID"
                 ? "CETAK TIKET"

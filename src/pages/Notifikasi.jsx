@@ -50,7 +50,7 @@ const Notifikasi = () => {
       })
       .then((response) => {
         setDataNotif(response.data.data);
-        console.log(response.data.data, "notif");
+        console.log(response.data.data, "notifff");
       })
       .catch((error) => {
         console.error(error);
@@ -60,6 +60,7 @@ const Notifikasi = () => {
   return (
     <>
       <HeaderLogin />
+
       <Container className="h-100 mt-5">
         <Row>
           <Col>
@@ -100,17 +101,17 @@ const Notifikasi = () => {
             </div>
           </Col>
           <Col xs={8}>
-            <p style={styles.txtMute}>
-              {dataNotif?.title}
-              <br />
-              <span style={styles.txtDark} className="fw-bold fs-6">
-                {dataNotif?.description}
-              </span>
-              <br />
-              <span style={styles.txtDark} className="fw-semibold">
-                Notification Body
-              </span>
-            </p>
+            {dataNotif.map((data) => (
+              <p style={styles.txtMute}>
+                {data?.title}
+                <br />
+                <span style={styles.txtDark} className="fw-bold fs-6">
+                  {data?.description}
+                </span>
+                <hr style={styles.customHr} />
+                <br />
+              </p>
+            ))}
           </Col>
           <Col xs={2}>
             <p style={styles.txtMute}>Formatted Datesdsdsd</p>

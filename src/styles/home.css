@@ -11,7 +11,7 @@
   /* Pilih Jadwal Penerbangan spesial di Tiketku! */
   position: absolute;
   right: 1px;
-  width: 459px;
+  width: 500px;
   height: 30px;
 
   /* Heading/20/Bold */
@@ -19,7 +19,7 @@
   font-family: "CustomFont";
   font-style: normal;
   font-weight: 700;
-  font-size: 20px;
+  font-size: 17px;
   line-height: 30px;
   /* identical to box height, or 150% */
 

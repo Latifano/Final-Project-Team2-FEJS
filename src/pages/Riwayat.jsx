@@ -1,10 +1,19 @@
-import React, { useState } from "react";
-import { Button, Col, Container, Form, InputGroup, Modal, Row} from "react-bootstrap";
+import React, { useEffect, useState } from "react";
+import {
+  Button,
+  Col,
+  Container,
+  Form,
+  InputGroup,
+  Modal,
+  Row,
+} from "react-bootstrap";
 import { BsArrowLeftShort, BsFunnel, BsSearch } from "react-icons/bs";
 import DetailPesanan from "../components/DetailPesanan";
 import "../styles/history.css";
 import HeaderLogin from "../components/HeaderLogin";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 const History = () => {
   const [showSearch, setShowSearch] = useState(false);
@@ -15,6 +24,54 @@ const History = () => {
   const handleCloseFilter = () => setShowFilter(false);
   const handleShowFilter = () => setShowFilter(true);
 
+  const [riwayat, setRiwayat] = useState([]);
+  const [dataById, setDataById] = useState([]);
+  const [id, setId] = useState("");
+  console.log(id);
+
+  const handleId = (id) => {
+    setId(id);
+  };
+
+  const getData = () => {
+    axios
+      .get(`https://tiketku-development.up.railway.app/order`, {
+        headers: {
+          Authorization: localStorage.getItem("token"),
+        },
+      })
+      .then((response) => {
+        console.log(response.data.data);
+        setRiwayat(response.data.data);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  };
+
+  const getDataDetail = (id) => {
+    axios
+      .get(`https://tiketku-development.up.railway.app/order/${id}`, {
+        headers: {
+          Authorization: localStorage.getItem("token"),
+        },
+      })
+      .then((response) => {
+        console.log(response.data.data);
+        setDataById(response.data.data);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  };
+
+  useEffect(() => {
+    getData();
+  }, []);
+
+  useEffect(() => {
+    getDataDetail(id);
+  }, [id]);
   return (
     <>
       <HeaderLogin />
@@ -51,41 +108,61 @@ const History = () => {
 
         <Row className="mt-4">
           <Col>
-            <DetailPesanan />
+            <DetailPesanan data={riwayat} handleId={handleId} />
           </Col>
 
           <Col>
             <div className="mt-3">
               <div className="issued d-flex align-items-center justify-content-between">
                 <h5 className="fw-bold">Detail Pesanan</h5>
-                <Button>Issued</Button>
+                <Button
+                  variant={
+                    dataById.status === "PAID"
+                      ? "success"
+                      : dataById.status === "UNPAID"
+                      ? "warning"
+                      : "danger"
+                  }
+                >
+                  {dataById.status}
+                </Button>
               </div>
               <h6>
                 Booking Code:
-                <b className="total-color"> 6723y2GHK</b>{" "}
+                <b className="total-color"> {dataById.booking_code}</b>{" "}
               </h6>
               <div className="d-flex justify-content-between align-items-center">
-                <h6 className="fw-bold">19:10</h6>
+                <h6 className="fw-bold">
+                  {dataById?.flight_detail?.departure?.time}
+                </h6>
                 <h6 className="text-color">Keberangkatan</h6>
               </div>
-              <p className="mb-0">5 Maret 2023</p>
-              <p>Soekarno Hatta - Terminal 1A Domestik</p>
+              <p className="mb-0">{dataById?.flight_detail?.departure?.date}</p>
+              <p>
+                {dataById?.flight_detail?.departure?.airport_name} -{" "}
+                {dataById?.flight_detail?.departure?.city}
+              </p>
             </div>
 
             <hr />
             <Col xs={1} className="d-flex align-items-center">
               <Col md="auto">
-                <h6 className="fw-bold">Jet Air - Economy</h6>
-                <h6 className="fw-bold mb-4">JT - 203</h6>
+                <h6 className="fw-bold">
+                  {dataById?.flight_detail?.airplane?.airline} -{" "}
+                  {dataById?.flight_detail?.airplane?.seat_class}
+                </h6>
+                <h6 className="fw-bold mb-4">
+                  {dataById?.flight_detail?.airplane?.flight_number}
+                </h6>
                 <h6 className="fw-bold">Informasi:</h6>
                 <p className="mb-0 fw-medium info">
-                  Penumpang 1: Mr. Harry Potter
+                  Penumpang 1:
+                  {/* {dataById?.flight_detail?.passenger?.title}{" "}
+                  {dataById?.flight_detail?.passenger?.fullname} */}
                 </p>
-                <p>ID: 1234567</p>
                 <p className="mb-0 fw-medium info">
-                  Penumpang 1: Miss Hermione
+                  KTP :{/* {dataById.flight_detail.passenger.ktp} */}
                 </p>
-                <p>ID: 789658</p>
               </Col>
             </Col>
 
@@ -93,11 +170,14 @@ const History = () => {
 
             <div className="div">
               <div className="d-flex justify-content-between align-items-center">
-                <h6>21:10</h6>
+                <h6>{dataById?.flight_detail?.arrival?.time}</h6>
                 <h6 className="text-color">Kedatangan</h6>
               </div>
-              <p className="mb-0">5 Maret 2023</p>
-              <p className="fw-bold">Melbourne International Airport</p>
+              <p className="mb-0">{dataById?.flight_detail?.arrival?.date}</p>
+              <p className="fw-bold">
+                {dataById?.flight_detail?.arrival?.airport_name} -{" "}
+                {dataById?.flight_detail?.arrival?.city}
+              </p>
             </div>
 
             <hr />
@@ -105,16 +185,20 @@ const History = () => {
             <div>
               <h5 className="fw-bold">Rincian Harga</h5>
               <div className="d-flex justify-content-between align-items-center mb-0">
-                <p>IDR 9.550.000</p>
-                <p>2 Adults</p>
+                <p>{dataById?.price_detail?.adult_count} Adults</p>
+                <p>{dataById?.price_detail?.adult_price}</p>
               </div>
               <div className="d-flex justify-content-between align-items-center mb-0">
-                <p>1 Baby</p>
-                <p>IDR 0</p>
+                <p>{dataById?.price_detail?.child_count} Child</p>
+                <p>{dataById?.price_detail?.child_price}</p>
+              </div>
+              <div className="d-flex justify-content-between align-items-center mb-0">
+                <p>{dataById?.price_detail?.infant_count} Baby</p>
+                <p>{dataById?.price_detail?.infant_price}</p>
               </div>
               <div className="d-flex justify-content-between align-items-center">
-                <p>Tax</p>
-                <p>IDR 300.000</p>
+                <p>Tax </p>
+                <p>{dataById?.price_detail?.tax}</p>
               </div>
             </div>
 
@@ -122,16 +206,27 @@ const History = () => {
 
             <div className="d-flex justify-content-between align-items-center">
               <h5>Total</h5>
-              <h4 className="total-color">IDR 9.850.000</h4>
+              <h4 className="total-color">
+                {dataById?.price_detail?.total_price}
+              </h4>
             </div>
 
             <Button
               as={Link}
-              to={"/ticket"}
-              type="submit"
               className="my-4 w-100"
+              variant={
+                dataById.status === "PAID"
+                  ? "success"
+                  : dataById.status === "UNPAID"
+                  ? "warning"
+                  : "danger"
+              }
             >
-              Cetak Tiket
+              {dataById.status === "PAID"
+                ? "CETAK TIKET"
+                : dataById.status === "UNPAID"
+                ? "LANJUT BAYAR"
+                : "TIKET DIBATALKAN"}
             </Button>
           </Col>
         </Row>

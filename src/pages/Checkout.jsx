@@ -22,11 +22,11 @@ const Checkout = () => {
   const elementAdult = [];
   const elementKid = [];
   const elementinfant = [];
-  const [name, setName] = useState();
-
-  useEffect(() => {
-    console.log(dataPost, flight_id);
-  }, []);
+  // const [name, setName] = useState();
+  const [orderId, setOrderId] = useState("");
+  // useEffect(() => {
+  //   console.log(orderId);
+  // }, [orderId]);
   const [showInput, setShowInput] = useState(false);
 
   const toggleInput = () => {
@@ -317,15 +317,14 @@ const Checkout = () => {
       </div>
     );
   }
-
+  const nav = useNavigate();
   const [data, setData] = useState([]);
   const [datakid, setDatakid] = useState([]);
   const [datainf, setDatainf] = useState([]);
-  function handleCreateOrder(e) {
-    e.preventDefault();
-    // console.log("halo")
-    // console.log(dataPost)
 
+  const [handleSimpan, sethandleSimpan] = useState(false);
+  const [handleBayar, sethandleBayar] = useState(true);
+  function handleCreateOrder() {
     function addObjectIfFromArray(masterArray, objectArray) {
       if (objectArray.length !== 0) {
         for (let i = 0; i < objectArray.length; i++) {
@@ -353,13 +352,22 @@ const Checkout = () => {
         },
       })
       .then((response) => {
-        console.log(response.data);
+        // console.log(response.data);
+        // setOrderId(response.data.data.id)
+        // console.log(orderId)
+        nav("/payment", { state: response.data.data.id });
 
         // nav to ....
       })
       .catch((error) => {
         console.error(error);
       });
+  }
+  function handleSaveData(e) {
+    e.preventDefault();
+    sethandleSimpan(true);
+    sethandleBayar(false);
+
     // console.log(order)
   }
 
@@ -478,30 +486,6 @@ const Checkout = () => {
     setDatainf(updatedMaster);
   }
 
-  // Passing Data Payment
-  const nav = useNavigate();
-
-  const handlePayButton = (e) => {
-    e.preventDefault();
-    console.log(dataPost, "data kee payment");
-    axios
-      .get(
-        `https://tiketku-development.up.railway.app/order/{order_id}`,
-        dataPost,
-        {
-          headers: {
-            Authorization: localStorage.getItem("token"),
-          },
-        }
-      )
-      .then((response) => {
-        nav("/payment", { state: dataPost });
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-  };
-
   return (
     <>
       <Container className="bg warning mt-5">
@@ -517,11 +501,7 @@ const Checkout = () => {
                 </Link>
               </Breadcrumb.Item>
               <Breadcrumb.Item active>
-                <Link
-                  to="/Payment"
-                  className="fw-bold"
-                  style={{ textDecoration: "none", color: "#7126B5" }}
-                >
+                <Link style={{ textDecoration: "none", color: "#7126B5" }}>
                   Bayar
                 </Link>
               </Breadcrumb.Item>
@@ -554,11 +534,15 @@ const Checkout = () => {
               <div className="dataPenumpang">
                 <h5 className="fw-bold mb-4">Isi Data Penumpang</h5>
                 {/* ini untuk looping adult */}
-                <form onSubmit={handleCreateOrder}>
+                <form onSubmit={handleSaveData}>
                   {elementAdult}
                   {elementKid}
                   {elementinfant}
-                  <Button type="submit" className="w-100 my-3 button-save">
+                  <Button
+                    disabled={handleSimpan}
+                    type="submit"
+                    className="w-100 my-3 button-save"
+                  >
                     Simpan
                   </Button>
                 </form>
@@ -618,15 +602,15 @@ const Checkout = () => {
               <h5 className="fw-bold">Rincian Harga</h5>
               <div className="d-flex justify-content-between align-items-center">
                 <p>{dataPost.price.adult_count} Adults</p>
-                <p>IDR {dataPost.price.adult_price}</p>
+                <p>{dataPost.price.adult_price}</p>
               </div>
               <div className="d-flex justify-content-between align-items-center">
-                <p>{dataPost.price.child_count} Baby</p>
-                <p>IDR {dataPost.price.child_price}</p>
+                <p>{dataPost.price.child_count} Child</p>
+                <p>{dataPost.price.child_price}</p>
               </div>
               <div className="d-flex justify-content-between align-items-center">
                 <p>{dataPost.price.infant_count} Baby</p>
-                <p>IDR {dataPost.price.infant_price}</p>
+                <p>{dataPost.price.infant_price}</p>
               </div>
               <div className="d-flex justify-content-between align-items-center">
                 <p>Tax</p>
@@ -643,11 +627,13 @@ const Checkout = () => {
               </h5>
             </div>
             <br />
-            <Link className="w-100 pay">
-              <Button onClick={handlePayButton} variant="danger">
-                Lanjut Bayar
-              </Button>
-            </Link>
+            <Button
+              disabled={handleBayar}
+              onClick={handleCreateOrder}
+              variant="danger"
+            >
+              Lanjut Bayar
+            </Button>
           </Col>
         </Row>
       </Container>

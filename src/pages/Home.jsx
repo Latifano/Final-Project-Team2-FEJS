@@ -564,16 +564,17 @@ function Home(props) {
             {/* First Line Kategori Destinasi */}
 
             <div className="kategori">
-              <Button className="button_kategori">
-                <img
-                  className="icon_masuk"
-                  src={search_logo}
-                  alt="Icon Search"
-                />
-                {favDestination.map((item) => (
+              {favDestination.map((item) => (
+                <Button className="button_kategori">
+                  <img
+                    className="icon_masuk"
+                    src={search_logo}
+                    alt="Icon Search"
+                  />
+
                   <p className="text-masuk">{item.city}</p>
-                ))}
-              </Button>
+                </Button>
+              ))}
 
               {/* <Button className="button_kategori">
                 <img

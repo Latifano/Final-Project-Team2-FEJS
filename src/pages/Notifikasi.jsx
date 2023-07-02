@@ -39,7 +39,7 @@ const Notifikasi = () => {
     setShowSearchModal(false);
   };
 
-  const [dataNotif, setDataNotif] = useState();
+  const [dataNotif, setDataNotif] = useState([]);
 
   useEffect(() => {
     axios
@@ -50,12 +50,14 @@ const Notifikasi = () => {
       })
       .then((response) => {
         setDataNotif(response.data.data);
-        console.log(response.data.data, "notifff");
+        console.log(response.data.data, "notifffff");
       })
       .catch((error) => {
         console.error(error);
       });
   }, []);
+
+  console.log(dataNotif, "datanotif");
 
   return (
     <>

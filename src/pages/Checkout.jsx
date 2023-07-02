@@ -362,7 +362,7 @@ const Checkout = () => {
       seat_class: dataPost.info.seat_class,
     };
     axios
-      .post("https://tiketku-development.up.railway.app/order", order, {
+      .post("https://tiketku.up.railway.app/order", order, {
         headers: {
           Authorization: localStorage.getItem("token"),
         },

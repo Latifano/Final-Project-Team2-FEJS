@@ -1,24 +1,76 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import "bootstrap/dist/css/bootstrap.min.css";
+import Home from "./pages/Home";
+import Login from "./pages/Login";
+import Lupasandi from "./pages/Lupasandi";
+import Register from "./pages/Register";
+import Otp from "./pages/Otp";
+import SearchResult from "./pages/SearchResult";
+import DetailAccount from "./pages/Account";
+import { useState } from "react";
+import Auth from "./private/auth";
+import RiwayatPemesanan from "./pages/Riwayat";
+import CardResult from "./components/search-result/CardResult";
+import Checkout from "./pages/Checkout";
+import Payment from "./pages/Payment";
+import DetailPesanan from "./components/DetailPesanan";
+import PaymentSuccess from "./components/Paymentsucces";
+import Notifikasi from "./pages/Notifikasi";
+import { GoogleOAuthProvider } from "@react-oauth/google";
 
 function App() {
+  const [token, setToken] = useState(localStorage.getItem("token"));
+  console.log(token, "tokenkuu");
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <GoogleOAuthProvider
+      clientId={process.env.REACT_APP_GOOGLE_OAUTH_CLIENT_ID}
+    >
+      <BrowserRouter>
+        <Routes>
+          {/* Home, logis & regis */}
+          <Route path="/" element={<Home tokenLogin={token} />} />
+          <Route
+            path="/login"
+            element={<Login tokenLoginFromApp={setToken} />}
+          />
+          <Route path="/register" element={<Register />} />
+          <Route path="/verifikasi-otp" element={<Otp />} />
+          <Route path="/lupasandi" element={<Lupasandi />} />
+
+          {/* Pages Search Result */}
+          <Route
+            path="/search_result"
+            element={<SearchResult tokenLogin={token} />}
+          />
+
+          {/* 3 Menu navbar is login : History, Notification & Account */}
+          <Route path="/riwayat" element={<RiwayatPemesanan />} />
+          <Route
+            path="/account"
+            element={
+              <Auth>
+                <DetailAccount />
+              </Auth>
+            }
+          />
+          <Route
+            path="/checkout"
+            element={
+              <Auth>
+                <Checkout />
+              </Auth>
+            }
+          />
+
+          {/* Checkout */}
+          <Route path="/payment" element={<Payment />} />
+          <Route path="/payment/:idUnpaid" element={<Payment />} />
+          <Route path="/paymentsuccess" element={<PaymentSuccess />} />
+          <Route path="/history" element={<RiwayatPemesanan />} />
+          <Route path="/notifikasi" element={<Notifikasi />} />
+        </Routes>
+      </BrowserRouter>
+    </GoogleOAuthProvider>
   );
 }
 

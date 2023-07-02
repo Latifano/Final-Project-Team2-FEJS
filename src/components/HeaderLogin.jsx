@@ -12,14 +12,17 @@ import Navbar from "react-bootstrap/Navbar";
 // import logo Tiketku
 import logo from "../styles/images/logo.png";
 import icon_masuk from "../styles/images/fi_log-in.png";
+import icon_history from "../styles/images/icon_history_checkout.png";
+import icon_notif from "../styles/images/icon_notif.png";
+import icon_user from "../styles/images/icon_user.png";
 
 // import css
-import "../styles/header.css";
+import "../styles/headerlogin.css";
 
 import React from "react";
 import { Link } from "react-router-dom";
 
-function Header() {
+function HeaderLogin() {
   return (
     <>
       {/* First Line Navbar */}
@@ -32,7 +35,7 @@ function Header() {
               style={{ maxHeight: "100px" }}
               navbarScroll
             >
-              <Navbar.Brand href="#">
+              <Navbar.Brand href="/">
                 <div className="logo">
                   <img src={logo} alt="Logo Tiket" />
                 </div>
@@ -47,12 +50,17 @@ function Header() {
                 />
               </Form>
             </Nav>
-            <Link to={"/login"}>
-              <Button className="button-masuk">
-                <img className="icon_masuk" src={icon_masuk} alt="Icon Masuk" />
-                <p className="text-masuk">Masuk</p>
-              </Button>
-            </Link>
+            <div className="container_menu">
+              <Link to={"/riwayat"}>
+                <img src={icon_history} alt="icon_history" />
+              </Link>
+              <Link to={"/notifikasi"}>
+                <img src={icon_notif} alt="icon_notif" />
+              </Link>
+              <Link to={"/account"}>
+                <img src={icon_user} alt="icon_user" />
+              </Link>
+            </div>
           </Navbar.Collapse>
         </Container>
       </Navbar>
@@ -61,4 +69,4 @@ function Header() {
   );
 }
 
-export default Header;
+export default HeaderLogin;

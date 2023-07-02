@@ -31,7 +31,7 @@ const Checkout = () => {
   const [country, setCountry] = useState();
   useEffect(() => {
     axios
-      .get(`https://tiketku-development.up.railway.app/country/`, {
+      .get(`https://tiketku.up.railway.app/country/`, {
         headers: {
           Authorization: localStorage.getItem("token"),
         },

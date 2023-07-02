@@ -71,7 +71,7 @@ function Home(props) {
 
   useEffect(() => {
     axios
-      .get("https://tiketku-development.up.railway.app/user/getDetail", {
+      .get("https://tiketku.up.railway.app/user/getDetail", {
         headers: {
           Authorization: localStorage.getItem("token"),
         },
@@ -91,7 +91,7 @@ function Home(props) {
 
   useEffect(() => {
     axios
-      .get("https://tiketku-development.up.railway.app/airport")
+      .get("https://tiketku.up.railway.app/airport")
       .then((response) => {
         setAirport(response.data.data);
       })
@@ -187,10 +187,7 @@ function Home(props) {
     console.log(dataPostToCheckout, "Dataposttt");
     e.preventDefault();
     axios
-      .post(
-        "https://tiketku-development.up.railway.app/flight/search",
-        dataPostToCheckout
-      )
+      .post("https://tiketku.up.railway.app/flight/search", dataPostToCheckout)
       .then((response) => {
         // Untuk menampung data yang akan diberikan ke pages search result, (temporary)
         let dataFlightToSearchResult = {
@@ -216,7 +213,7 @@ function Home(props) {
   const [favDestination, setFavDestination] = useState([]);
   useEffect(() => {
     axios
-      .get("https://tiketku-development.up.railway.app/airport/favorite")
+      .get("https://tiketku.up.railway.app/airport/favorite")
       .then((response) => {
         setFavDestination(response.data.data);
       })

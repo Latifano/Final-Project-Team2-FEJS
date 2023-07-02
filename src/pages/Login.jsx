@@ -22,7 +22,7 @@ const Login = (props) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     axios
-      .post("https://tiketku-development.up.railway.app/auth/login", user)
+      .post("https://tiketku.up.railway.app/auth/login", user)
       .then((response) => {
         // Handle successful registration
         console.log(response.data);

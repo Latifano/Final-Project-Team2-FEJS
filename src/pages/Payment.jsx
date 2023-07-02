@@ -26,7 +26,7 @@ const PaymentPage = () => {
 
   useEffect(() => {
     axios
-      .get(`https://tiketku-development.up.railway.app/order/${id}`, {
+      .get(`https://tiketku.up.railway.app/order/${id}`, {
         headers: {
           Authorization: localStorage.getItem("token"),
         },
@@ -47,7 +47,7 @@ const PaymentPage = () => {
   const handlePayment = () => {
     axios
       .post(
-        `https://tiketku-development.up.railway.app/payment`,
+        `https://tiketku.up.railway.app/payment`,
         {
           order_id: id,
           payment_type: "debit",
@@ -70,7 +70,7 @@ const PaymentPage = () => {
   const [dataUnpaid, setDataUnpaid] = useState();
   const getDataUnpaid = (id) => {
     axios
-      .get(`https://tiketku-development.up.railway.app/order/${id}`, {
+      .get(`https://tiketku.up.railway.app/order/${id}`, {
         headers: {
           Authorization: localStorage.getItem("token"),
         },

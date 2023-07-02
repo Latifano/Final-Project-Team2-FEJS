@@ -35,7 +35,7 @@ const History = () => {
 
   const getData = () => {
     axios
-      .get(`https://tiketku-development.up.railway.app/order`, {
+      .get(`https://tiketku.up.railway.app/order`, {
         headers: {
           Authorization: localStorage.getItem("token"),
         },
@@ -51,7 +51,7 @@ const History = () => {
 
   const getDataDetail = (id) => {
     axios
-      .get(`https://tiketku-development.up.railway.app/order/${id}`, {
+      .get(`https://tiketku.up.railway.app/order/${id}`, {
         headers: {
           Authorization: localStorage.getItem("token"),
         },

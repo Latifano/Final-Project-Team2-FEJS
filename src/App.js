@@ -23,7 +23,9 @@ function App() {
   console.log(token, "tokenkuu");
   return (
     <GoogleOAuthProvider
-      clientId={process.env.REACT_APP_GOOGLE_OAUTH_CLIENT_ID}
+      clientId={
+        "33131594591-toabge19lmsoq7p22ljq4uhibqg10els.apps.googleusercontent.com"
+      }
     >
       <BrowserRouter>
         <Routes>

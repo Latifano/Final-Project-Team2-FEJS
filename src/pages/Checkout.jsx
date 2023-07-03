@@ -134,7 +134,7 @@ const Checkout = () => {
                 />
               </Form.Group>
 
-              <Form.Group className="mb-3">
+              {/* <Form.Group className="mb-3">
                 <Form.Label className="fw-bold" style={{ color: "#7126b5" }}>
                   Negara Penerbit
                 </Form.Label>
@@ -146,7 +146,7 @@ const Checkout = () => {
                   Berlaku Sampai
                 </Form.Label>
                 <Form.Control type="date" />
-              </Form.Group>
+              </Form.Group> */}
             </Form>
           </Card.Body>
         </Card>

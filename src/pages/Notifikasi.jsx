@@ -116,7 +116,7 @@ const Notifikasi = () => {
             ))}
           </Col>
           <Col xs={2}>
-            <p style={styles.txtMute}>Formatted Datesdsdsd</p>
+            <p style={styles.txtMute}></p>
           </Col>
         </Row>
         <hr style={styles.customHr} />

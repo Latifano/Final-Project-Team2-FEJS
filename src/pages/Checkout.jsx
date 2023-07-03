@@ -630,7 +630,7 @@ const Checkout = () => {
               </div>
               <div className="d-flex justify-content-between align-items-center">
                 <p>Tax</p>
-                <p>IDR {dataPost.price.tax}</p>
+                <p>{dataPost.price.tax}</p>
               </div>
             </div>
 
@@ -639,7 +639,7 @@ const Checkout = () => {
             <div className="d-flex justify-content-between align-items-center">
               <h5 className="fw-bold txt-primary">Total</h5>
               <h5 className="fw-bold" style={{ color: "#7126B5" }}>
-                IDR {dataPost.price.total_price}
+                {dataPost.price.total_price}
               </h5>
             </div>
             <br />

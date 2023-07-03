@@ -10,10 +10,12 @@ import {
 } from "react-bootstrap";
 import successImage from "../styles/images/success.png";
 import "../styles/stylepaymentsuccess.css";
+import HeaderLogin from "./HeaderLogin";
 
 const Dashboard = () => {
   return (
     <>
+      <HeaderLogin />
       <Container>
         <Row>
           <Col>
@@ -88,7 +90,7 @@ const Dashboard = () => {
               size="md"
               className="custom-button-lgn-two text-light w-40 my-2"
               as={Link}
-              to="/detail-penerbangan"
+              to="/"
             >
               Cari Penerbangan Lain
             </Button>

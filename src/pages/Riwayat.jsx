@@ -57,7 +57,7 @@ const History = () => {
         },
       })
       .then((response) => {
-        console.log(response.data.data);
+        console.log(response.data.data, "datapaid");
         setDataById(response.data.data);
       })
       .catch((error) => {

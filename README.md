@@ -1,4 +1,17 @@
-# Getting Started with Create React App
+#Kampus Merdeka Binar Academy Batch 4 Final Project
+Terdiri dari FrontEnd Javascript dan BackEnd Javascript
+
+Front End Javascript :
+1. Ikromi Latifano
+2. Muhammad Aldiansyah
+3. Mukhammad Ryantiarno Priyadi
+
+Back End Javascript :
+1. Muhammad Rafli Aulia Rojani Lutfi
+2. Syaifun Nadhif Maulana
+3. Hafizh Ridho
+
+==================================================================================================
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 

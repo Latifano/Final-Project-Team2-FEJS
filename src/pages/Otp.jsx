@@ -27,7 +27,7 @@ const Otp = () => {
     };
     axios
       .post(
-        `https://tiketku.up.railway.app/register/verifyAccount?token=${token}`,
+        `https://tiketku-production.up.railway.app/register/verifyAccount?token=${token}`,
         data
       )
       .then((response) => {

@@ -32,7 +32,7 @@ const Register = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     axios
-      .post("https://tiketku.up.railway.app/auth/register", user)
+      .post("https://tiketku-production.up.railway.app/auth/register", user)
       .then((response) => {
         const data = {
           email,

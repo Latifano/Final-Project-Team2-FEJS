@@ -43,7 +43,7 @@ const Notifikasi = () => {
 
   useEffect(() => {
     axios
-      .get(`https://tiketku.up.railway.app/notif`, {
+      .get(`https://tiketku-production.up.railway.app/notif`, {
         headers: {
           Authorization: localStorage.getItem("token"),
         },

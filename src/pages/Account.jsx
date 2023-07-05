@@ -42,7 +42,7 @@ const Account = () => {
   };
   useEffect(() => {
     axios
-      .get("https://tiketku.up.railway.app/user/getDetail", {
+      .get("https://tiketku-production.up.railway.app/user/getDetail", {
         headers: {
           Authorization: localStorage.getItem("token"),
         },
@@ -71,11 +71,15 @@ const Account = () => {
     e.preventDefault();
     console.log(user);
     axios
-      .put("https://tiketku.up.railway.app/user/updateProfile", user, {
-        headers: {
-          Authorization: localStorage.getItem("token"),
-        },
-      })
+      .put(
+        "https://tiketku-production.up.railway.app/user/updateProfile",
+        user,
+        {
+          headers: {
+            Authorization: localStorage.getItem("token"),
+          },
+        }
+      )
       .then((response) => {
         console.log(response.data);
         window.location.reload();

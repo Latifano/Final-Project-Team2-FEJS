@@ -17,6 +17,7 @@ import {
 } from "react-bootstrap";
 import axios from "axios";
 import PaymentSuccess from "../../src/components/Paymentsucces";
+import HeaderLogin from "../components/HeaderLogin";
 
 const PaymentPage = () => {
   const loc = useLocation();
@@ -94,6 +95,7 @@ const PaymentPage = () => {
         <PaymentSuccess />
       ) : (
         <React.Fragment>
+          <HeaderLogin />
           <Container className="mt-5">
             <Row>
               <Col>

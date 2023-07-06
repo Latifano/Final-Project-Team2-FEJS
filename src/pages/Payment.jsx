@@ -49,7 +49,7 @@ const PaymentPage = () => {
       .post(
         `https://tiketgw-production.up.railway.app/payment`,
         {
-          order_id: Number(idUnpaid),
+          order_id: idUnpaid === undefined ? Number(id) : Number(idUnpaid),
           payment_type: "debit",
         },
 

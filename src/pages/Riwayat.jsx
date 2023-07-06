@@ -27,7 +27,6 @@ const History = () => {
   const [riwayat, setRiwayat] = useState([]);
   const [dataById, setDataById] = useState([]);
   const [id, setId] = useState("");
-  console.log(id);
 
   const handleId = (id) => {
     setId(id);
@@ -35,13 +34,12 @@ const History = () => {
 
   const getData = () => {
     axios
-      .get(`https://tiketku-production.up.railway.app/order`, {
+      .get(`https://tiketgw-production.up.railway.app/order`, {
         headers: {
           Authorization: localStorage.getItem("token"),
         },
       })
       .then((response) => {
-        console.log(response.data.data);
         setRiwayat(response.data.data);
       })
       .catch((error) => {
@@ -51,21 +49,18 @@ const History = () => {
 
   const getDataDetail = (id) => {
     axios
-      .get(`https://tiketku-production.up.railway.app/order/${id}`, {
+      .get(`https://tiketgw-production.up.railway.app/order/${id}`, {
         headers: {
           Authorization: localStorage.getItem("token"),
         },
       })
       .then((response) => {
-        console.log(response.data.data, "datapaid");
         setDataById(response.data.data);
       })
       .catch((error) => {
         console.error(error);
       });
   };
-
-  console.log(dataById?.flight_detail?.passengers, "data passenger");
 
   useEffect(() => {
     getData();

@@ -32,14 +32,14 @@ const Register = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     axios
-      .post("https://tiketku-production.up.railway.app/auth/register", user)
+      .post("https://tiketgw-production.up.railway.app/auth/register", user)
       .then((response) => {
         const data = {
           email,
           token: response.data.data.token,
         };
         // Handle successful registration
-        console.log(response.data.data);
+
         nav("/verifikasi-otp", { state: data });
       })
       .catch((error) => {

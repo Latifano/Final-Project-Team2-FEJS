@@ -43,21 +43,18 @@ const Notifikasi = () => {
 
   useEffect(() => {
     axios
-      .get(`https://tiketku-production.up.railway.app/notif`, {
+      .get(`https://tiketgw-production.up.railway.app/notif`, {
         headers: {
           Authorization: localStorage.getItem("token"),
         },
       })
       .then((response) => {
         setDataNotif(response.data.data);
-        console.log(response.data.data, "notifffff");
       })
       .catch((error) => {
         console.error(error);
       });
   }, []);
-
-  console.log(dataNotif, "datanotif");
 
   return (
     <>

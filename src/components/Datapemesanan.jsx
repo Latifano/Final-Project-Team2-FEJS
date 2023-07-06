@@ -16,7 +16,7 @@ const Datapemesanan = () => {
 
   useEffect(() => {
     axios
-      .get("https://tiketku-production.up.railway.app/user/getDetail", {
+      .get("https://tiketgw-production.up.railway.app/user/getDetail", {
         headers: {
           Authorization: localStorage.getItem("token"),
         },

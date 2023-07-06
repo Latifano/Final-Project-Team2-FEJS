@@ -35,9 +35,6 @@ function SearchResult(props) {
 
   // Tempat menampung temporary data dari home
   const { data, penumpang, seat_class } = loc.state;
-  useEffect(() => {
-    console.log(seat_class);
-  }, []);
 
   return (
     <>
@@ -170,7 +167,7 @@ function SearchResult(props) {
           {/* {data === undefined || data === null ? <Empty /> : <CardResult />} */}
 
           {/* First Line  Accordion Result*/}
-          {console.log(data, "ini datat")}
+
           {data === undefined || data === null ? (
             <Empty />
           ) : (
@@ -230,10 +227,10 @@ function SearchResult(props) {
                               flight_id: data.id,
                               seat_class,
                             };
-                            console.log(seat_class);
+
                             axios
                               .post(
-                                "https://tiketku-production.up.railway.app/flight/detail",
+                                "https://tiketgw-production.up.railway.app/flight/detail",
                                 dataPostToGetDetail
                               )
                               .then((response) => {

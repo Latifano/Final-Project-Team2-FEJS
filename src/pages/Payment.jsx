@@ -27,13 +27,12 @@ const PaymentPage = () => {
 
   useEffect(() => {
     axios
-      .get(`https://tiketku-production.up.railway.app/order/${id}`, {
+      .get(`https://tiketgw-production.up.railway.app/order/${Number(id)}`, {
         headers: {
           Authorization: localStorage.getItem("token"),
         },
       })
       .then((response) => {
-        console.log(response.data);
         setData(response.data.data);
       })
       .catch((error) => {
@@ -48,11 +47,12 @@ const PaymentPage = () => {
   const handlePayment = () => {
     axios
       .post(
-        `https://tiketku-production.up.railway.app/payment`,
+        `https://tiketgw-production.up.railway.app/payment`,
         {
-          order_id: Number(id),
+          order_id: Number(idUnpaid),
           payment_type: "debit",
         },
+
         {
           headers: {
             Authorization: localStorage.getItem("token"),
@@ -71,13 +71,12 @@ const PaymentPage = () => {
   const [dataUnpaid, setDataUnpaid] = useState();
   const getDataUnpaid = (id) => {
     axios
-      .get(`https://tiketku-production.up.railway.app/order/${id}`, {
+      .get(`https://tiketgw-production.up.railway.app/order/${id}`, {
         headers: {
           Authorization: localStorage.getItem("token"),
         },
       })
       .then((response) => {
-        console.log(response.data.data, "dataUn");
         setDataUnpaid(response.data.data);
       })
       .catch((error) => {

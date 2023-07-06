@@ -22,10 +22,9 @@ const Login = (props) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     axios
-      .post("https://tiketku-production.up.railway.app/auth/login", user)
+      .post("https://tiketgw-production.up.railway.app/auth/login", user)
       .then((response) => {
         // Handle successful registration
-        console.log(response.data);
 
         nav("/");
         props.tokenLoginFromApp(response.data.data.token);
@@ -35,8 +34,6 @@ const Login = (props) => {
         // Handle error
         alert("Password Salah / Email Belum Terdaftar !");
       });
-
-    console.log(user);
   };
 
   const user = {

@@ -31,13 +31,12 @@ const Checkout = () => {
   const [country, setCountry] = useState();
   useEffect(() => {
     axios
-      .get(`https://tiketku-production.up.railway.app/country/`, {
+      .get(`https://tiketgw-production.up.railway.app/country/`, {
         headers: {
           Authorization: localStorage.getItem("token"),
         },
       })
       .then((response) => {
-        console.log(response.data.data);
         setCountry(response.data.data);
       })
       .catch((error) => {
@@ -362,18 +361,13 @@ const Checkout = () => {
       seat_class: dataPost.info.seat_class,
     };
     axios
-      .post("https://tiketku-production.up.railway.app/order", order, {
+      .post("https://tiketgw-production.up.railway.app/order", order, {
         headers: {
           Authorization: localStorage.getItem("token"),
         },
       })
       .then((response) => {
-        // console.log(response.data);
-        // setOrderId(response.data.data.id)
-        // console.log(orderId)
         nav("/payment", { state: response.data.data.id });
-
-        // nav to ....
       })
       .catch((error) => {
         console.error(error);
@@ -583,7 +577,7 @@ const Checkout = () => {
             <Row className="d-flex align-items-center">
               <Col md={1}>
                 {/* Logo maskapai */}
-                {/* <img src={Matahari} alt="" /> */}
+                {/* {dataPost.airplane.logo} */}
               </Col>
               <Col md="auto">
                 <h6 className="fw-bold">

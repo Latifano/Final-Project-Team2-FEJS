@@ -6,7 +6,6 @@ import { BsGeoAltFill } from "react-icons/bs";
 const DetailPesanan = ({ data, handleId }) => {
   return (
     <div>
-      <h6 className="fw-bold">Maret 2023</h6>
       {data.map((item) => {
         const timeDeparture = item.flight_detail.departure_time.slice(-5);
         const dateDeparture = item.flight_detail.departure_time.split(" ");

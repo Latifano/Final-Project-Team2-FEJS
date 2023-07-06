@@ -54,7 +54,6 @@ import CardFavDestination from "../components/CardFavDestination";
 function Home(props) {
   const nav = useNavigate();
   // First line HeaderLogin
-  console.log(props, "propsku");
   const [tokentoHome, setTokentoHome] = useState(
     props.tokenLogin ? props.tokenLogin : undefined
   );
@@ -63,7 +62,6 @@ function Home(props) {
     setTokentoHome(props.tokenLogin);
   }, [props]);
 
-  console.log(tokentoHome, "tokennn");
   // Last line HeaderLogin
 
   // First Line Get User Detail
@@ -71,13 +69,12 @@ function Home(props) {
 
   useEffect(() => {
     axios
-      .get("https://tiketku-production.up.railway.app/user/getDetail", {
+      .get("https://tiketgw-production.up.railway.app/user/getDetail", {
         headers: {
           Authorization: localStorage.getItem("token"),
         },
       })
       .then((response) => {
-        console.log(response.data.data);
         setName(response.data.data.fullname);
       })
       .catch((error) => {
@@ -91,7 +88,7 @@ function Home(props) {
 
   useEffect(() => {
     axios
-      .get("https://tiketku-production.up.railway.app/airport")
+      .get("https://tiketgw-production.up.railway.app/airport")
       .then((response) => {
         setAirport(response.data.data);
       })
@@ -100,9 +97,6 @@ function Home(props) {
       });
   }, []);
 
-  useEffect(() => {
-    console.log(airport);
-  }, [airport]);
   // Last Line Fetch airport
 
   // First Passenger
@@ -184,11 +178,10 @@ function Home(props) {
   };
 
   const handleSearchFlight = (e) => {
-    console.log(dataPostToCheckout, "Dataposttt");
     e.preventDefault();
     axios
       .post(
-        "https://tiketku-production.up.railway.app/flight/search",
+        "https://tiketgw-production.up.railway.app/flight/search",
         dataPostToCheckout
       )
       .then((response) => {
@@ -208,15 +201,13 @@ function Home(props) {
       });
   };
 
-  console.log(dataPostToCheckout, "Dataposttt2");
-
   // Last Line Search Flight
 
   //  First Line Fav Destination
   const [favDestination, setFavDestination] = useState([]);
   useEffect(() => {
     axios
-      .get("https://tiketku-production.up.railway.app/airport/favorite")
+      .get("https://tiketgw-production.up.railway.app/airport/favorite")
       .then((response) => {
         setFavDestination(response.data.data);
       })
@@ -225,9 +216,6 @@ function Home(props) {
       });
   }, []);
 
-  useEffect(() => {
-    console.log(favDestination, "destinasiii");
-  }, [favDestination]);
   //  Last Line Fav Destination
 
   return (

@@ -21,18 +21,18 @@ const Otp = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(token);
+
     const data = {
       otp,
     };
     axios
       .post(
-        `https://tiketku-production.up.railway.app/register/verifyAccount?token=${token}`,
+        `https://tiketgw-production.up.railway.app/register/verifyAccount?token=${token}`,
         data
       )
       .then((response) => {
         // Handle successful registration
-        console.log(response.message);
+
         alert("berhasil terverifikasi");
         nav("/login");
       })

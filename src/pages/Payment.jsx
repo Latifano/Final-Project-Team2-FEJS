@@ -27,7 +27,7 @@ const PaymentPage = () => {
 
   useEffect(() => {
     axios
-      .get(`https://tiketku.up.railway.app/order/${id}`, {
+      .get(`https://tiketku-production.up.railway.app/order/${id}`, {
         headers: {
           Authorization: localStorage.getItem("token"),
         },

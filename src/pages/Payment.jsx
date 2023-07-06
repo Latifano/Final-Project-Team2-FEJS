@@ -50,7 +50,7 @@ const PaymentPage = () => {
       .post(
         `https://tiketku-production.up.railway.app/payment`,
         {
-          order_id: id,
+          order_id: Number(id),
           payment_type: "debit",
         },
         {

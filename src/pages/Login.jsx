@@ -4,6 +4,7 @@ import "../styles/Login.css";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import GoogleLogin from "../components/GoogleLogin";
+import logo from "../styles/images/logo.png";
 
 const Login = (props) => {
   const nav = useNavigate();
@@ -44,7 +45,9 @@ const Login = (props) => {
   return (
     <Container fluid className="vh-100">
       <Row className="h-100">
-        <Col className="d-flex align-items-center justify-content-center bg_color display-none"></Col>
+        <Col className="d-flex align-items-center justify-content-center bg_color display-none">
+          <img src={logo} alt="logo" />
+        </Col>
         <Col className="d-flex align-items-center justify-content-center">
           <div className="w-75">
             <h3 className="fw-bold">Masuk</h3>

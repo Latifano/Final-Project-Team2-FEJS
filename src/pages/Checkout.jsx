@@ -31,7 +31,7 @@ const Checkout = () => {
   const [country, setCountry] = useState();
   useEffect(() => {
     axios
-      .get(`https://tiketku.up.railway.app/country/`, {
+      .get(`https://tiketku-production.up.railway.app/country/`, {
         headers: {
           Authorization: localStorage.getItem("token"),
         },
@@ -362,7 +362,7 @@ const Checkout = () => {
       seat_class: dataPost.info.seat_class,
     };
     axios
-      .post("https://tiketku.up.railway.app/order", order, {
+      .post("https://tiketku-production.up.railway.app/order", order, {
         headers: {
           Authorization: localStorage.getItem("token"),
         },

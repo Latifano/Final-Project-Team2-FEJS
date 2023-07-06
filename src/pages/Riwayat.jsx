@@ -75,23 +75,6 @@ const History = () => {
     getDataDetail(id);
   }, [id]);
 
-  // const elementPassenger = [];
-  // for (let i = 1; i <= dataById?.flight_detail?.passengers.length; i++) {
-  //   elementPassenger.push(
-  //     <p className="mb-0 fw-medium info">
-  //       <p>Penumpang {i}:</p>
-  //       <p>
-  //         {dataById?.flight_detail?.passengers?.map((item) => item.title)}{" "}
-  //         {dataById?.flight_detail?.passengers?.map((item) => item.fullname)}
-  //       </p>
-
-  //       <p>
-  //         KTP : {dataById?.flight_detail?.passengers?.map((item) => item.ktp)}
-  //       </p>
-  //     </p>
-  //   );
-  // }
-
   return (
     <>
       <HeaderLogin />

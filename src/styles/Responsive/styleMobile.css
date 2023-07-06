@@ -1,4 +1,4 @@
-@media only screen and (min-width: 1px) and (max-width: 576px) {
+@media only screen and (min-width: 100px) and (max-width: 575px) {
   .banner_home {
     position: absolute;
     width: 50%;
@@ -142,7 +142,7 @@
     width: 139px;
     height: 24px;
     left: 90px;
-    top: 660px;
+    top: 860px;
 
     /* Title/16/Bold */
 
